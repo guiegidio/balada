@@ -21,6 +21,11 @@ Users json
 Bar json
    nome Text
    endereco Text
+   
+Evento json
+    nome Text
+    dia Text
+    descricao Text
 |]
 
 mkYesod "Balada" [parseRoutes|
