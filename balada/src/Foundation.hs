@@ -14,60 +14,59 @@ data Balada = Balada{connPool::ConnectionPool}
 
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 
-T_pessoas json
-    cd_cpf_pessoa Text sqltype=varchar(11)
-    nm_pessoa Text
-    dc_senha Text
-    nm_cidade Text
-    dc_email Text
-    nu_ddd Text
-    nu_celular Text
-    cd_delecao Text
+Pessoas json
+    cpf_pessoa Text sqltype=varchar(11)
+    nome Text
+    senha Text
+    cidade Text
+    email Text
+    ddd Text
+    celular Text
+    delecao Text
     
-T_estabelecimento json
-    cd_estabelecimento Text
-    nm_estabelcimento Text
-    nm_cidade_estab Text
-    dc_email_estab Text
-    nu_ddd_estab Text
-    nu_telefone_estab Text
-    cd_delecao Text
+Estabelecimento json
+    numero_estab Text
+    nome_estab Text
+    cidade_estab Text
+    email_estab Text
+    ddd_estab Text
+    telefone_estab Text
+    delecao_estab Text
     
-T_categoria_estab json
-    nm_categoria_estab Text
+Categoria_estab json
+    nome_categoria Text
     
-T_sub_categ_estab json
-    nm_sub_categ_estab Text
+Sub_categ_estab json
+    nome_sub_categ Text
     cd_categoria_estab T_categoria_estabId
 
-T_faixa_preco json
-    nm_faixa_preco Text
-    qt_valor_minimo Text sqltype=float
-    qt_valor_maximo Text sqltype=float
+Faixa_preco json
+    nome_faixa_preco Text
+    valor_minimo Text sqltype=float
+    valor_maximo Text sqltype=float
 
-T_classificacao_estab json
-    nm_classificacao_estab Text
-    qt_classificacao_estab Text
+Classificacao_estab json
+    nome_classificacao Text
+    qt_classificacao Text
     
-T_dia_evento json
-    cd_dia Text
+Dia_evento json
     dc_dia Text
     
-T_F_interesse_pessoa json
-    cd_cpf_pessoa Text sqltype=varchar(11)
-    cd_categoria_estab Text
-    cd_sub_categ_estab Text
-    cd_faixa_preco Text
-    cd_classificacao_estab Text
+Interesse json
+    cpf_pessoa Text sqltype=varchar(11)
+    cd_categoria_estab Categoria_estabId
+    cd_sub_categ_estab Sub_categ_estabId
+    cd_faixa_preco Faixa_precoId
+    cd_classificacao_estab Classificacao_estabId
     cd_delecao Text
     
 T_F_estabelecimento json
-    cd_estabelecimento T_estabelecimentoId
-    cd_categoria_estab T_categoria_estabId
-    cd_sub_categ_estab T_sub_categ_estabId
-    cd_faixa_preco Text
-    cd_dia Text
-    cd_classificacao_estab Text
+    cd_estabelecimento EstabelecimentoId
+    cd_categoria_estab Categoria_estabId
+    cd_sub_categ_estab Sub_categ_estabId
+    cd_faixa_preco Faixa_precoId
+    cd_dia Dia_eventoId
+    cd_classificacao_estab Classificacao_estabId
     cd_delecao Text
 
 |]
