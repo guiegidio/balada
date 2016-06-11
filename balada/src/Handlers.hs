@@ -213,23 +213,6 @@ getAdminR = defaultLayout [whamlet|
 |]
 
 
-getCadastrarR :: Handler Html
-getCadastrarR = do
-           (widget, enctype) <- generateFormPost formUser
-           defaultLayout [whamlet|
-                <center> <form method=post enctype=#{enctype} action=@{CadastrarR}>
-                     ^{widget}
-                     <input type="submit" value="Enviar">
-            <a href=@{HomeR}>Back Home
-          |]
-
-postCadastrarR :: Handler Html
-postCadastrarR = do
-           ((result, _), _) <- runFormPost formUser
-           case result of 
-               FormSuccess user -> (runDB $ insert user) >>= \piid -> redirect (PerfilR piid)
-               _ -> redirect ErroR
-
 getLoginR :: Handler Html
 getLoginR = do
            (widget, enctype) <- generateFormPost formLogin
@@ -252,13 +235,6 @@ postLoginR = do
                        Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
 
 
-getPerfilR :: PessoasId -> Handler Html
-getPerfilR uid = do
-      user <- runDB $ get404 uid
-      defaultLayout [whamlet|
-          <p><b> Pagina de #{usersNome user}
-          <p><b> Login: #{usersLogin user}
-     |]
 
 getErroR :: Handler Html
 getErroR = defaultLayout [whamlet|
