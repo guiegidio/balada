@@ -160,6 +160,8 @@ getCadfaixaprecoR = do
         <h1> Faixa de preco estabelecido
     |]
 
+
+
 --Limbo Mental
 getAdminR :: Handler Html
 getAdminR = defaultLayout [whamlet|
