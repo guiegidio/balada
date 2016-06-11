@@ -16,8 +16,8 @@ import Database.Persist.Postgresql
 mkYesodDispatch "Balada" pRoutes
 
 --Forms
-
 formPessoa :: Form T_cadastro_pessoa
+formPessoa = renderDivs $ T_pessoas <$>
     areq textField "CPF: " Nothing <*>
     areq textField "Nome: " Nothing <*>
     areq textField "Senha: " Nothing <*>
@@ -26,63 +26,13 @@ formPessoa :: Form T_cadastro_pessoa
     areq textField "DDD: " Nothing <*>
     areq textField "Celular: " Nothing <*>
 
-formEstabelecimento :: Form T_estabelecimento
+formEstabelecimento :: FormEstabelecimento
+formEstabelecimento = renderDivs $ T_estabelecimento <$>
     areq textField "Nome: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "Email: " Nothing <*>
     areq textField "DDD: " Nothing <*>
     areq textField "Telefone: " Nothing <*>
-
-formCategoria :: Form T_categoria_estab
-    areq textField "Categoria: " Nothing <*>
-    
-formSubcategoria :: Form T_sub_categ_estab
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
-    areq textField "Subcategoria: " Nothing <*>
-    
-formFaixapreco :: Form T_faixa_preco
-    areq textField "Nome: " Nothing <*>
-    areq textField "Valor Inicial: " Nothing <*>
-    areq textField "Valor Final: " Nothing <*>
-
-formDia :: Form T_dia_evento
-    areq textField "Dia: " Nothing <*>
-
-formInteresse :: Form T_F_interesse_pessoa
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
-    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
-    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
-    areq (selectField listaClassificacao) "Classificacao" Nothing <*>
-
-formFestabelecimento :: Form T_F_estabelecimento
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
-    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
-    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
-    areq (selectField listaClassificacao) "Classificacao" Nothing <*>
-    area (selectField listaDia) "Dia" Nothing <*>
-    
---Lista Drop Down
--- testar o funfar
-listaCategoria = do 
-    categoria <- runDB $ selectList [] [Asc nm_categoria_estab] optionsPairs
-    $ fmap(\x ->(nm_categoria_estab $ entityVal x, entityKey x)) categoria
-    
-listaSubcategoria = do 
-    subcategoria <- runDB $ selectList [] [Asc nm_sub_categ_estab] optionsPairs
-    $ fmap(\x ->(nm_sub_categ_estab $ entityVal x, entityKey x)) subcategoria
-
-listaClassificacao
-    classificacao <- runDB $ selectList [] [Asc nm_classificacao_estab] optionsPairs
-    $ fmap(\x ->(nm_classificacao_estab $ entityVal x, entityKey x)) classificacao
-    
-listaFaixapreco
-    faixapreco <- runDB $ selectList [] [Asc nm_faixa_preco] optionsPairs
-    $ fmap(\x ->(nm_faixa_preco $ entityVal x, entityKey x)) faixapreco
-    
-listaDia
-    dia <- runDB $ selectList [] [Asc dc_dia] optionsPairs
-    $ fmap(\x ->(dc_dia $ entityVal x, entityKey x)) dia
-    
     
 --PAGINAS 
 getHomeR :: Handler Html
@@ -165,9 +115,22 @@ postCadpessoaR :: Handler Html
 postCadpessoaR = do
     ((result, _),_) <- runFormPost formPessoa
     case result of
-        FormSuccess pessoa -> (runDB $ inser pessoa) >> = cd_cpf_pessoa -> redirect (CadpessoaR cd_cpf_pessoa)
+        FormSuccess pessoa -> (runDB $ insert pessoa) >> = cd_cpf_pessoa -> redirect (CadpessoaR cd_cpf_pessoa)
         _ -> redirect ErroR
         
+postCadestabR :: Handler Html
+postCadestabR = do
+    ((result, _),_) <- runFormPost formEstabelecimento
+    case result of
+        FormSuccess estab -> (runDB $ insert estab) >> = cd_estabelecimento -> redirect (CadestabR cd_estabelecimento)
+        _ -> redirect ErroR
+
+postCadcategoriaR :: Handler Html
+postCadcategoriaR = do
+    ((result, _),_) <- runFormPost formCategoria
+    case result of
+        FormSuccess categoria -> (runDB $ insert categoria) >> = cd_categoria_estab -> redirect (CadcategoriabR cd_categoria_estab)
+        _ -> redirect ErroR
     
 --Limbo Mental
 getAdminR :: Handler Html
