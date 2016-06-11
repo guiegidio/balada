@@ -66,8 +66,20 @@ listaCategoria = do
     
 listaSubcategoria = do 
     subcategoria <- runDB $ selectList [] [Asc nm_sub_categ_estab] optionsPairs
-    $ fmap(\x ->(nm_categoria_estab $ entityVal x, entityKey x)) subcategoria
+    $ fmap(\x ->(nm_sub_categ_estab $ entityVal x, entityKey x)) subcategoria
 
+listaClassificacao
+    classificacao <- runDB $ selectList [] [Asc nm_classificacao_estab] optionsPairs
+    $ fmap(\x ->(nm_classificacao_estab $ entityVal x, entityKey x)) classificacao
+    
+listaFaixapreco
+    faixapreco <- runDB $ selectList [] [Asc nm_faixa_preco] optionsPairs
+    $ fmap(\x ->(nm_faixa_preco $ entityVal x, entityKey x)) faixapreco
+    
+listaDia
+    dia <- runDB $ selectList [] [Asc dc_dia] optionsPairs
+    $ fmap(\x ->(dc_dia $ entityVal x, entityKey x)) dia
+    
     
 --PAGINAS 
 getHomeR :: Handler Html
@@ -75,17 +87,30 @@ getHomeR = defaultLayout $ do
             toWidget $(whamletFile "Hamlets/home.hamlet")-- >> toWidget $(cassiusFile"Lucius/home.cassius")
 
 getCadastroR :: Handler Html
-getCadastroR = do
+getCadastroR = defaultLayout $ do 
+                toWidget $(whamletFile "Hamlets/cadastro.hamlet")
+
+getAdministradorR :: Handler Html
+getAdministradorR = defaultLayout $ do 
+                    toWidget $(whamletFile "Hamlets/cadastro.hamlet")
+                    
+getAdminR :: Handler Html
+getAdminR = defaultLayout [whamlet|
+    <h1> Bem-vindo meu Rei!
+|]
+
+getCadastrarR :: Handler Html
+getCadastrarR = do
            (widget, enctype) <- generateFormPost formUser
            defaultLayout [whamlet|
-                <center> <form method=post enctype=#{enctype} action=@{CadastroR}>
+                <center> <form method=post enctype=#{enctype} action=@{CadastrarR}>
                      ^{widget}
                      <input type="submit" value="Enviar">
             <a href=@{HomeR}>Back Home
            |]
 
-postCadastroR :: Handler Html
-postCadastroR = do
+postCadastrarR :: Handler Html
+postCadastrarR = do
            ((result, _), _) <- runFormPost formUser
            case result of 
                FormSuccess user -> (runDB $ insert user) >>= \piid -> redirect (PerfilR piid)
@@ -133,10 +158,6 @@ getLogoutR = do
          <h1> ADEUS!
      |]
      
-getAdminR :: Handler Html
-getAdminR = defaultLayout [whamlet|
-    <h1> Bem-vindo meu Rei!
-|]
 
 getAboutR = defaultLayout [whamlet|
     Essa pagina foi criada para acelerar o processo de decidir roles!!!
