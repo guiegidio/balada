@@ -71,6 +71,12 @@ formIstabelecimento = renderDivs $ T_F_estabelecimento <$>
     areq (selectField listaClassificacao) "Classificacao" Nothing <*>
     areq (selectField listaDia) "Dia" Nothing 
     
+--Form Login
+formLogin :: Form (Text,Text)
+formLogin = renderDivs $ (,) <$>
+    areq textField "Email: " Nothing <*>
+    areq passwordField "Senha: " Nothing
+    
 --Lista Drop Down
 -- testar o funfar
 listaCategoria = do 
