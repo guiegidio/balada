@@ -94,10 +94,47 @@ getAdministradorR :: Handler Html
 getAdministradorR = defaultLayout $ do 
                     toWidget $(whamletFile "Hamlets/cadastro.hamlet")
                     
+
+
+--Alcool na mesa
+getCadpessoaR :: Handler Html
+getCadpessoaR = do 
+    (widget, enctype) <-generateFormPost formPessoa
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CadpessoaR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Cadastro Completo
+    |]
+
+getCadestabR :: Handler Html
+getCadestabR = do 
+    (widget, enctype) <-generateFormPost formEstabelecimento
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CadestabR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Cadastro de estabelecimento Completo
+    |]
+    
+getCadcategoriaR :: Handler Html
+getCadcategoriaR = do 
+    (widget, enctype) <-generateFormPost formCategoria
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CadcategoriabR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Cadastro de estabelecimento Completo
+    |]
+    
+
+
+--Limbo Mental
 getAdminR :: Handler Html
 getAdminR = defaultLayout [whamlet|
     <h1> Bem-vindo meu Rei!
 |]
+
 
 getCadastrarR :: Handler Html
 getCadastrarR = do
