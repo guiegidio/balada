@@ -18,16 +18,20 @@
 <div class="post">
 <h2 class="title"><a href=@{HomeR}>Welcome to the party!
 <div class="entry">
-<form>
-categoria:<br>
-<input type="text" name="categoria"><br>
+<input type="text" name="categoria">
+<form method=post enctype=#{enctype} action=@{CadcategoriabR $ aid}>
 <input type="submit" name="cadastrar">
-<form>
-categoria:<br>
-<form action="action_page.php">
-<select name="categoria">
-<option value="SQL de visão do conteúdo da lista categoria">DropDown
-<br><br>
-sub-categoria:<br>
-<input type="text" name="sub-categoria"><br>
+<input type="text" name="sub-categoria">
+<form method=post enctype=#{enctype} action=@{CadsubcategbR $ aid}>
 <input type="submit" name="cadastrar">
+<input type="text" name="faixa preco">
+<form method=post enctype=#{enctype} action=@{CadfaixaprecoR $ aid}>
+<input type="submit" name="cadastrar">
+<input type="text" name="estabelecimento">
+<form method=post enctype=#{enctype} action=@{CadestabR $ aid}>
+<input type="submit" name="cadastrar">
+<input type="text" name="Fato estabelecimento">
+<form method=post enctype=#{enctype} action=@{CadFestabelecimentoR $ aid}>
+<input type="submit" name="cadastrar">
+
+
