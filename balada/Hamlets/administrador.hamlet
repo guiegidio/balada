@@ -1,0 +1,33 @@
+<doctype5>
+<head>
+<title>TP-Haskell - Guilherme Egídio, Luiz Fernando e Rafael Caichiolo
+<div id="header-wrapper"> 
+<div id="header" class="container">
+<div id="logo">
+<h1>Welcome to the Party!!!
+<p>Página de Administração
+<div id="menu">
+<ul>
+<li class="current_page_item"><a href=@{HomeR}>Início
+<li><a href=@{LoginR}>LOGIN>
+<li><a href=@{CadastroR}>CADASTRE-SE
+<li><a href=@{AboutR}>Saiba Mais
+<div id="banner" class="container">
+<div id="page" class="container">
+<div id="content">
+<div class="post">
+<h2 class="title"><a href=@{HomeR}>Welcome to the party!
+<div class="entry">
+<form>
+categoria:<br>
+<input type="text" name="categoria"><br>
+<input type="submit" name="cadastrar">
+<form>
+categoria:<br>
+<form action="action_page.php">
+<select name="categoria">
+<option value="SQL de visão do conteúdo da lista categoria">DropDown
+<br><br>
+sub-categoria:<br>
+<input type="text" name="sub-categoria"><br>
+<input type="submit" name="cadastrar">

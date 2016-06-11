@@ -1,0 +1,40 @@
+<doctype5>
+<head>
+<title>TP-Haskell - Guilherme Egídio, Luiz Fernando e Rafael Caichiolo
+<div id="header-wrapper"> 
+<div id="header" class="container">
+<div id="logo">
+<h1>Welcome to the Party!!!
+<p>Onde você encontra o rolê do seu jeito!
+<div id="menu">
+<ul>
+<li class="current_page_item"><a href=>Início
+<li><a href=@{LoginR}>LOGIN>
+<li><a href=@{CadastroR}>CADASTRE-SE
+<li><a href=@{AboutR}>Saiba Mais
+<div id="banner" class="container">
+<div class="image-style"><img src="" width="970" height="320" alt="" />
+<div id="page" class="container">
+<div id="content">
+<div class="post">
+<h2 class="title">Welcome to the party!
+<div class="entry">
+<form>
+    
+--     cd_usuario UsuarioId
+--     nm_usuario Text
+--     dt_nascimento Text
+--     nm_cidade Text
+--     dc_email Text
+--     dc_senha Text
+--     id_delecao Bool
+Nome:<br>
+<input type="text" name="Nome">
+<input type="text" name="Cidade">
+<input type="text" name="Email">
+<input type="text" name="Senha">
+<input type="submit" value="Cadastrar">
+<div style="clear: both;">&nbsp;
+<div style="clear: both;">&nbsp;
+<div id="footer">
+<p>© 2016 Preguiça Inc. Toda preguiça reservada por <a href="https://www.facebook.com/guilhermeex" real="nofollow"> Guilherme Egídio, <a href="https://www.facebook.com/lbarros94" rel="nofollow"> Luiz Fernando e <a href="https://www.facebook.com/rafael.caichiolo" real="nofollow">.  Fotos do <a href="www.google.com">Google
