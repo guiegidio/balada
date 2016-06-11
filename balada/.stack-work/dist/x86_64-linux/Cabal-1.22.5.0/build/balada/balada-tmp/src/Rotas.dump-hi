@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2016-06-11 04:19:05.770047 UTC
+2016-06-11 19:58:55.480711 UTC
 
 interface main@main:Rotas 7103
-  interface hash: 2b37932ee43b3a375ad2b6f2e0785d9f
-  ABI hash: 6b5bb18ea3777d6ce0bf798294835eb3
+  interface hash: 2459668527295c75d4b52141aeaf1f61
+  ABI hash: 63b0d238f27bde76873b8d3ca647e8c0
   export-list hash: 8be7a049d94b1767de4b5f80575e032b
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: eff5e623cf316ffe3f39252fffb87620
@@ -204,7 +204,7 @@ import  -/  yesod-1.4.3@yesod_G3l0IvftpcQLS1fhy6ci93:Yesod 5be136ed9273569748acb
 addDependentFile "/home/ubuntu/.stack/programs/x86_64-linux/ghc-7.10.3/lib/ghc-7.10.3/include/ghcversion.h"
 addDependentFile ".stack-work/dist/x86_64-linux/Cabal-1.22.5.0/build/autogen/cabal_macros.h"
 addDependentFile "/usr/include/stdc-predef.h"
-3e162831547ff2b8c09a1fa337b31792
+baaa71031398a84d614239cfa29b47dc
   pRoutes ::
     Data.String.IsString typ =>
     [Yesod.Routes.TH.Types.ResourceTree typ]
@@ -213,345 +213,630 @@ addDependentFile "/usr/include/stdc-predef.h"
                 (\ @ typ w :: Data.String.IsString typ ->
                  GHC.Types.:
                    @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                   (Rotas.pRoutes48 @ typ)
+                   (Rotas.pRoutes95 @ typ)
                    (GHC.Types.:
                       @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                      (Rotas.pRoutes42 @ typ)
+                      (Rotas.pRoutes89 @ typ)
                       (GHC.Types.:
                          @ (Yesod.Routes.TH.Types.ResourceTree typ)
                          (Yesod.Routes.TH.Types.ResourceLeaf
                             @ typ
                             (Yesod.Routes.TH.Types.Resource
                                @ typ
-                               Rotas.pRoutes41
+                               Rotas.pRoutes88
                                (GHC.Types.:
                                   @ (Yesod.Routes.TH.Types.Piece typ)
-                                  (Rotas.pRoutes39 @ typ)
+                                  (Rotas.pRoutes86 @ typ)
                                   (GHC.Types.:
                                      @ (Yesod.Routes.TH.Types.Piece typ)
                                      (Yesod.Routes.TH.Types.Dynamic
                                         @ typ
                                         (w `cast` (Data.String.NTCo:IsString[0] <typ>_N)
-                                           Rotas.pRoutes38))
+                                           Rotas.pRoutes85))
                                      (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))))
-                               (Rotas.pRoutes3 @ typ)
+                               (Rotas.pRoutes55 @ typ)
                                (GHC.Types.[] @ GHC.Base.String)
                                GHC.Types.True))
-                         (GHC.Types.:
-                            @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                            (Rotas.pRoutes28 @ typ)
-                            (GHC.Types.:
-                               @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                               (Rotas.pRoutes22 @ typ)
-                               (GHC.Types.:
-                                  @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                                  (Rotas.pRoutes16 @ typ)
-                                  (GHC.Types.:
-                                     @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                                     (Rotas.pRoutes10 @ typ)
-                                     (GHC.Types.:
-                                        @ (Yesod.Routes.TH.Types.ResourceTree typ)
-                                        (Rotas.pRoutes1 @ typ)
-                                        (GHC.Types.[]
-                                           @ (Yesod.Routes.TH.Types.ResourceTree typ)))))))))) -}
-4cedfbaca5fdf3f609a4f0c4a7683fec
-  pRoutes1 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf @ typ (Rotas.pRoutes2 @ typ)) -}
-3418fb751ea0105143ed99d906dfda1a
-  pRoutes10 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf
-                   @ typ
+                         (Rotas.pRoutes1 @ typ)))) -}
+58aae8fd932fcd4e76ad431c2ee44655
+  pRoutes1 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes79 @ typ)
+                   (Rotas.pRoutes2 @ typ)) -}
+5657df065e714abaa115af8bc9211ac4
+  pRoutes10 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes23 @ typ)
                    (Rotas.pRoutes11 @ typ)) -}
-7a7431d7d4a01df178d5b9d0e9b24ef0
-  pRoutes11 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes15
+1c38d9a40e0d78f645be6cf68168d524
+  pRoutes11 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
                    (Rotas.pRoutes12 @ typ)
-                   (Rotas.pRoutes3 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-51c5a44b58cdf743489f63bad69103fc
-  pRoutes12 :: [Yesod.Routes.TH.Types.Piece typ]
-  {- Strictness: m2,
-     Unfolding: (\ @ typ ->
-                 GHC.Types.:
-                   @ (Yesod.Routes.TH.Types.Piece typ)
-                   (Rotas.pRoutes13 @ typ)
-                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-b56f6e8a03512188878f28720bf37c56
-  pRoutes13 :: Yesod.Routes.TH.Types.Piece typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes14) -}
-a6ae140f47dce8c31288916ce971cf1f
-  pRoutes14 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "admin"#) -}
-e451c4cd7e0888ecf2ef07e0bb02af69
-  pRoutes15 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "AdminR"#) -}
-6c6e057a446637c8e23dba6871de72df
-  pRoutes16 :: Yesod.Routes.TH.Types.ResourceTree typ
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.ResourceTree typ))) -}
+5b5dd9a0921e57bd50a0609dc0b23a97
+  pRoutes12 :: Yesod.Routes.TH.Types.ResourceTree typ
   {- Strictness: m1,
      Unfolding: (\ @ typ ->
                  Yesod.Routes.TH.Types.ResourceLeaf
                    @ typ
-                   (Rotas.pRoutes17 @ typ)) -}
-c2c5ee6f126fbe829c0fc0f302d2c292
-  pRoutes17 :: Yesod.Routes.TH.Types.Resource typ
+                   (Rotas.pRoutes13 @ typ)) -}
+55649ec8b198c18222558de62846be4a
+  pRoutes13 :: Yesod.Routes.TH.Types.Resource typ
   {- Strictness: m,
      Unfolding: (\ @ typ ->
                  Yesod.Routes.TH.Types.Resource
                    @ typ
-                   Rotas.pRoutes21
-                   (Rotas.pRoutes18 @ typ)
-                   (Rotas.pRoutes3 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-ec558e35940b84d0f2e237f847f903ee
-  pRoutes18 :: [Yesod.Routes.TH.Types.Piece typ]
-  {- Strictness: m2,
-     Unfolding: (\ @ typ ->
-                 GHC.Types.:
-                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   Rotas.pRoutes22
                    (Rotas.pRoutes19 @ typ)
-                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-f95e0f32b1a527e07660c5070958243f
-  pRoutes19 :: Yesod.Routes.TH.Types.Piece typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes20) -}
-2435c0f43538cd9606331df8a6dff278
-  pRoutes2 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes9
-                   (Rotas.pRoutes6 @ typ)
-                   (Rotas.pRoutes3 @ typ)
+                   (Rotas.pRoutes14 @ typ)
                    (GHC.Types.[] @ GHC.Base.String)
                    GHC.Types.True) -}
-728e4e4b05e0a40e4abc39d34254f775
-  pRoutes20 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "about"#) -}
-89d3edef6c7ee9252bec9d26c189a646
-  pRoutes21 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "AboutR"#) -}
-c44fe7f480d204ee0bd20ec6f111edef
-  pRoutes22 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf
-                   @ typ
-                   (Rotas.pRoutes23 @ typ)) -}
-491bd11d232baf78ff7d72ddc11d63be
-  pRoutes23 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes27
-                   (Rotas.pRoutes24 @ typ)
-                   (Rotas.pRoutes3 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-427d614278d42b4d5389e53de7f4a4eb
-  pRoutes24 :: [Yesod.Routes.TH.Types.Piece typ]
-  {- Strictness: m2,
-     Unfolding: (\ @ typ ->
-                 GHC.Types.:
-                   @ (Yesod.Routes.TH.Types.Piece typ)
-                   (Rotas.pRoutes25 @ typ)
-                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-effaa0107320bfbbb88b558b2f1a8a89
-  pRoutes25 :: Yesod.Routes.TH.Types.Piece typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes26) -}
-1406839a620d914e84f14709292a4263
-  pRoutes26 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "erro"#) -}
-a6d43de5953814aed8344fcde151756c
-  pRoutes27 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "ErroR"#) -}
-c7243c00ada0a70cd16ac072d8e123ae
-  pRoutes28 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf
-                   @ typ
-                   (Rotas.pRoutes29 @ typ)) -}
-098b229a36d6fdc07360d8b2bb56bac6
-  pRoutes29 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes37
-                   (Rotas.pRoutes34 @ typ)
-                   (Rotas.pRoutes30 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-9f1294ecb15257f09eb50e2b18088af9
-  pRoutes3 :: Yesod.Routes.TH.Types.Dispatch typ
+8cfb158aee4f9236ed092356f5367257
+  pRoutes14 :: Yesod.Routes.TH.Types.Dispatch typ
   {- Strictness: m1,
      Unfolding: (\ @ typ ->
                  Yesod.Routes.TH.Types.Methods
                    @ typ
                    (GHC.Base.Nothing @ typ)
-                   Rotas.pRoutes4) -}
-32980ebdb0c50fc954379dbb9effdbb6
-  pRoutes30 :: Yesod.Routes.TH.Types.Dispatch typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Methods
-                   @ typ
-                   (GHC.Base.Nothing @ typ)
-                   Rotas.pRoutes31) -}
-669fd10a184b9271b5eca73ba443bde2
-  pRoutes31 :: [GHC.Base.String]
+                   Rotas.pRoutes15) -}
+70152f16cd141578745d1b95b2411e8b
+  pRoutes15 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ GHC.Base.String
-                   Rotas.pRoutes5
-                   Rotas.pRoutes32) -}
-7df9e044ed4a827ae430a60b9707abc0
-  pRoutes32 :: [GHC.Base.String]
+                   Rotas.pRoutes18
+                   Rotas.pRoutes16) -}
+25d92b3b0d0dda4e7765932f85e75ec9
+  pRoutes16 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ GHC.Base.String
-                   Rotas.pRoutes33
+                   Rotas.pRoutes17
                    (GHC.Types.[] @ GHC.Base.String)) -}
-ef5192b80f5970715bdaca9e1e74fd84
-  pRoutes33 :: [GHC.Types.Char]
+d823094316942c587cae42f3b3a7542f
+  pRoutes17 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "POST"#) -}
-5e2ded97bade4ec6cf6fc5d5fd2a5dcc
-  pRoutes34 :: [Yesod.Routes.TH.Types.Piece typ]
+267ff41a9e678ad9d06c285e7997f12d
+  pRoutes18 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "GET"#) -}
+cb9e2e459841b326ab82a1eba13dc4ff
+  pRoutes19 :: [Yesod.Routes.TH.Types.Piece typ]
   {- Strictness: m2,
      Unfolding: (\ @ typ ->
                  GHC.Types.:
                    @ (Yesod.Routes.TH.Types.Piece typ)
-                   (Rotas.pRoutes35 @ typ)
+                   (Rotas.pRoutes20 @ typ)
                    (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-29ba5fbf6ee38f05a9c7888b65d36e5e
-  pRoutes35 :: Yesod.Routes.TH.Types.Piece typ
+7e9c58b07ff3dbcd0a6f90840cead4e5
+  pRoutes2 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes73 @ typ)
+                   (Rotas.pRoutes3 @ typ)) -}
+7dedea36336fa45f5148893bbd5b81dd
+  pRoutes20 :: Yesod.Routes.TH.Types.Piece typ
   {- Strictness: m1,
      Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes36) -}
-84d05884b14e62bc2c4a07148dfc4b2e
-  pRoutes36 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "login"#) -}
-fb97222cedd906e55c512621fbde35e5
-  pRoutes37 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "LoginR"#) -}
-21d66737d1fcc88b0fd0f5b619d5b39e
-  pRoutes38 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "T_pessoasId"#) -}
-56431e257ea664c86f72a3edad228901
-  pRoutes39 :: Yesod.Routes.TH.Types.Piece typ
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes21) -}
+7ed8413d7a1ed6906ecf18ff4eba9d50
+  pRoutes21 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadfaixapreco"#) -}
+b2eb7623293824d4a901188a2f7935fe
+  pRoutes22 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadfaixaprecoR"#) -}
+b7b5fbb1ed1a727c3cd21766cbcd57da
+  pRoutes23 :: Yesod.Routes.TH.Types.ResourceTree typ
   {- Strictness: m1,
      Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes40) -}
-2fc918b53cf80033ab76c2916e1f6a53
-  pRoutes4 :: [GHC.Base.String]
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes24 @ typ)) -}
+6759ae7d469ba6f7a7da81f40c966287
+  pRoutes24 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes28
+                   (Rotas.pRoutes25 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+06b06d5d6ee3a5c250427e6b0788ae21
+  pRoutes25 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes26 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+0d87e6fa2aaf2751accd57d35f4a2206
+  pRoutes26 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes27) -}
+e5b2b366cb982230d47e1a5e2b6dc0fd
+  pRoutes27 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "caddia"#) -}
+4df7ba6f99f43a42b1eeb1c9af1ba01f
+  pRoutes28 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CaddiaR"#) -}
+a7c7b36cfb834adb3ccdcb797104c11b
+  pRoutes29 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes30 @ typ)) -}
+011baaa81b552a32cc7b0e304276392b
+  pRoutes3 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes67 @ typ)
+                   (Rotas.pRoutes4 @ typ)) -}
+74a0a4e8516dae4f9a824292d2f0ef1e
+  pRoutes30 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes34
+                   (Rotas.pRoutes31 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+e2baa347c0b4f1d89d439d16315cc4a7
+  pRoutes31 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes32 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+7da854fc6e558e7c43dce25d95f60570
+  pRoutes32 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes33) -}
+2032b5f928cd94401d6dc9eff2dd7b84
+  pRoutes33 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadsubcateg"#) -}
+56c276185ff302796c37f7390985acbe
+  pRoutes34 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadsubcategR"#) -}
+392c98e24f02b474b9b3895310d9653f
+  pRoutes35 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes36 @ typ)) -}
+c4c498b64e037199836c1627e0ec664a
+  pRoutes36 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes40
+                   (Rotas.pRoutes37 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+40bfb608249a09e5b186564decfef676
+  pRoutes37 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes38 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+f30c38e9b5e698d5a3b1ec4a53fc5300
+  pRoutes38 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes39) -}
+f1e3651725ddbc3aff2e0c90988d13b9
+  pRoutes39 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadcategoria"#) -}
+1b3e2339378e78bb46f4e2eb46ab1707
+  pRoutes4 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes61 @ typ)
+                   (Rotas.pRoutes5 @ typ)) -}
+76b54be4160e82ac188feb4cb4dd06d2
+  pRoutes40 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadcategoriaR"#) -}
+5406436482d8a672bc0a318a7452aae5
+  pRoutes41 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes42 @ typ)) -}
+f7f707ef34b5b4b986895256d3ae64cd
+  pRoutes42 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes46
+                   (Rotas.pRoutes43 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+a00278e8c968d5d6d7d5d01ab8f0f891
+  pRoutes43 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes44 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+b3cfd357dbd3a0c6e7b40d145b0e26bc
+  pRoutes44 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes45) -}
+a91f0f3d029797ecc405727c92c42a47
+  pRoutes45 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadestab"#) -}
+d8cb720f613d9f79f3c2589c620ec9d7
+  pRoutes46 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadestabR"#) -}
+7d06d1528623a753d7cf325ea7296aec
+  pRoutes47 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes48 @ typ)) -}
+df3e18ae38345cb629d9d6e3756f0dc1
+  pRoutes48 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes52
+                   (Rotas.pRoutes49 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+47708f0eb092c1dbcf81c9a07d94212c
+  pRoutes49 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes50 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+a38f75d44ec902da2df2e0c31e118f91
+  pRoutes5 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes53 @ typ)
+                   (Rotas.pRoutes6 @ typ)) -}
+e9d30212b26bf0572d0227a36c7869e7
+  pRoutes50 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes51) -}
+2548784d3b16624c52cbb7c0a851e451
+  pRoutes51 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadPessoa"#) -}
+6a62052f0b57f984c4301ed4b49fdd06
+  pRoutes52 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadPessoaR"#) -}
+fd406680b0134068d691d89ad1726d11
+  pRoutes53 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes54 @ typ)) -}
+46a40872a90199e561c3693aacc69541
+  pRoutes54 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes60
+                   (Rotas.pRoutes57 @ typ)
+                   (Rotas.pRoutes55 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+6b1c0ee10461552033dfd24b856f65e7
+  pRoutes55 :: Yesod.Routes.TH.Types.Dispatch typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Methods
+                   @ typ
+                   (GHC.Base.Nothing @ typ)
+                   Rotas.pRoutes56) -}
+61264b0fd311e1984b72ee5b434b244e
+  pRoutes56 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ GHC.Base.String
-                   Rotas.pRoutes5
+                   Rotas.pRoutes18
                    (GHC.Types.[] @ GHC.Base.String)) -}
-798b0377fb610fadf6b4bc2fc068a466
-  pRoutes40 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "perfil"#) -}
-27551f79de6adf442f0d10ebaa57ba1e
-  pRoutes41 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "PerfilR"#) -}
-8bd684a5a9ca49bcbe0cde3610b9180d
-  pRoutes42 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf
-                   @ typ
-                   (Rotas.pRoutes43 @ typ)) -}
-bb7ecf20dcc0b1255a80683edd57c45d
-  pRoutes43 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes47
-                   (Rotas.pRoutes44 @ typ)
-                   (Rotas.pRoutes30 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-d3304553669ea022018994c92cae277e
-  pRoutes44 :: [Yesod.Routes.TH.Types.Piece typ]
+904f120cea5f09ca1dac96d690639ed6
+  pRoutes57 :: [Yesod.Routes.TH.Types.Piece typ]
   {- Strictness: m2,
      Unfolding: (\ @ typ ->
                  GHC.Types.:
                    @ (Yesod.Routes.TH.Types.Piece typ)
-                   (Rotas.pRoutes45 @ typ)
+                   (Rotas.pRoutes58 @ typ)
                    (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-e833f0f2ef1f702e263b28822e95e0bb
-  pRoutes45 :: Yesod.Routes.TH.Types.Piece typ
+36a503e98027038c866988d1c6b0ece4
+  pRoutes58 :: Yesod.Routes.TH.Types.Piece typ
   {- Strictness: m1,
      Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes46) -}
-0af65ce49e369815958d03bf03fd906d
-  pRoutes46 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "cadastro"#) -}
-0a0c21a97891fb6fd822cf2c1c9961ea
-  pRoutes47 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "CadastroR"#) -}
-f7f2fb65ab340c8b0840178fcea888de
-  pRoutes48 :: Yesod.Routes.TH.Types.ResourceTree typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.ResourceLeaf
-                   @ typ
-                   (Rotas.pRoutes49 @ typ)) -}
-2204ec8807ee1e4a283965a03ec06133
-  pRoutes49 :: Yesod.Routes.TH.Types.Resource typ
-  {- Strictness: m,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Resource
-                   @ typ
-                   Rotas.pRoutes50
-                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))
-                   (Rotas.pRoutes3 @ typ)
-                   (GHC.Types.[] @ GHC.Base.String)
-                   GHC.Types.True) -}
-c12dbc4c295e2b9abcd15b46f071a182
-  pRoutes5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "GET"#) -}
-a287d502bd9163b6d59e5fed38459459
-  pRoutes50 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "HomeR"#) -}
-e739657b03a4aaedd68bbba1f08a709d
-  pRoutes6 :: [Yesod.Routes.TH.Types.Piece typ]
-  {- Strictness: m2,
-     Unfolding: (\ @ typ ->
-                 GHC.Types.:
-                   @ (Yesod.Routes.TH.Types.Piece typ)
-                   (Rotas.pRoutes7 @ typ)
-                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
-82d45fdf2b3da64a49e68136680b6720
-  pRoutes7 :: Yesod.Routes.TH.Types.Piece typ
-  {- Strictness: m1,
-     Unfolding: (\ @ typ ->
-                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes8) -}
-1a95cedfd175cd2a9784e734141282ff
-  pRoutes8 :: [GHC.Types.Char]
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes59) -}
+cc2ad4ecbf8ddbc34b1f8b511366ee30
+  pRoutes59 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "logout"#) -}
-4f0d2c64677c5deef40f626ee47ed61c
-  pRoutes9 :: [GHC.Types.Char]
+383c27a3bd8dc90468f0e5b6068895ee
+  pRoutes6 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes47 @ typ)
+                   (Rotas.pRoutes7 @ typ)) -}
+6ffe971bb3e94dbe6831ba8e9fe84d3f
+  pRoutes60 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "LogoutR"#) -}
+ab8447eb7c74165aee8c1e206109ca64
+  pRoutes61 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes62 @ typ)) -}
+62890936e6afbcaded2c410bacf05d90
+  pRoutes62 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes66
+                   (Rotas.pRoutes63 @ typ)
+                   (Rotas.pRoutes55 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+fdc57fb2977435804ebe3ad4ffff36ac
+  pRoutes63 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes64 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+1a2d7155262d7f0bb3fc988bae65434d
+  pRoutes64 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes65) -}
+c54f38a8a521450b1c490a4876f1d83f
+  pRoutes65 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "admin"#) -}
+ae1e0612fd9975802f7f6c8a82e27f66
+  pRoutes66 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "AdminR"#) -}
+f5f5247e5e1af316866d8cc4731ff987
+  pRoutes67 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes68 @ typ)) -}
+05c4f316d167ef155c853d791f975814
+  pRoutes68 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes72
+                   (Rotas.pRoutes69 @ typ)
+                   (Rotas.pRoutes55 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+cf4e758713d0341a882a2b32124446d3
+  pRoutes69 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes70 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+b398d44c8a5c8847cc4789e8ae3be3f8
+  pRoutes7 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes41 @ typ)
+                   (Rotas.pRoutes8 @ typ)) -}
+55a4040d11ef678a8dfafc3585780c7b
+  pRoutes70 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes71) -}
+e64eba4df6c7aa96bfb14b7ea2d924d8
+  pRoutes71 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "about"#) -}
+774afdbf8ce2805dd9a836846a9e7fac
+  pRoutes72 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "AboutR"#) -}
+844a77cb80f738fff11cb1e45fd65bbe
+  pRoutes73 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes74 @ typ)) -}
+6b56f2d35fa7cf223f2d84e251daa4ee
+  pRoutes74 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes78
+                   (Rotas.pRoutes75 @ typ)
+                   (Rotas.pRoutes55 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+34671c6c3699a12e9434e37ba05897b6
+  pRoutes75 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes76 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+d505ab71d319d5fd0a70d271ddb20b43
+  pRoutes76 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes77) -}
+e9cc47c6cd871ee4a68f10eecd1f0d1d
+  pRoutes77 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "erro"#) -}
+4f2d024df079a1cb38d9363e97ee4a15
+  pRoutes78 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "ErroR"#) -}
+67efc88027ee447672eeb9ce3d3385f0
+  pRoutes79 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes80 @ typ)) -}
+1e311d075877b1a918429349dcce6213
+  pRoutes8 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes35 @ typ)
+                   (Rotas.pRoutes9 @ typ)) -}
+6d32b3e82bc683dce1145cdc77761bc4
+  pRoutes80 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes84
+                   (Rotas.pRoutes81 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+16d1edaee2d73c4d7854084fb9aef780
+  pRoutes81 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes82 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+6357f8b69a6774edd7fa4c1150e64e81
+  pRoutes82 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes83) -}
+c00e37cdef4a3ed6096c9a96d40cbb05
+  pRoutes83 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "login"#) -}
+3c43f7c1d4aa9cedd5d71357bee512e4
+  pRoutes84 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "LoginR"#) -}
+a97dc80fc815b87c6b057c41af987cba
+  pRoutes85 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "PessoasId"#) -}
+8ac2e5d6261a0f8fb301a87cf3b1d4d3
+  pRoutes86 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes87) -}
+43713a4c6858a7fcdeb68d0f69c26d7c
+  pRoutes87 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "perfil"#) -}
+de16894a0caf4d82599fda175871ebc9
+  pRoutes88 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "PerfilR"#) -}
+d3166bc66aaff625609744aca3dcc607
+  pRoutes89 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes90 @ typ)) -}
+8eb94dcccf1ebdf2012fe4b2bd9c5145
+  pRoutes9 :: [Yesod.Routes.TH.Types.ResourceTree typ]
+  {- Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.ResourceTree typ)
+                   (Rotas.pRoutes29 @ typ)
+                   (Rotas.pRoutes10 @ typ)) -}
+e84491fd388b58dccb821d7686d6aae0
+  pRoutes90 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes94
+                   (Rotas.pRoutes91 @ typ)
+                   (Rotas.pRoutes14 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+e4dc709ba50617aa6065446fc812d44f
+  pRoutes91 :: [Yesod.Routes.TH.Types.Piece typ]
+  {- Strictness: m2,
+     Unfolding: (\ @ typ ->
+                 GHC.Types.:
+                   @ (Yesod.Routes.TH.Types.Piece typ)
+                   (Rotas.pRoutes92 @ typ)
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))) -}
+07fb6ebe38ae2cbca69a001ad4fe4dce
+  pRoutes92 :: Yesod.Routes.TH.Types.Piece typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Static @ typ Rotas.pRoutes93) -}
+0e5d2d675fd5c2b9a86ae61a3ffae3b7
+  pRoutes93 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "cadastro"#) -}
+185385016b135d19ee559ae79cca5329
+  pRoutes94 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "CadastroR"#) -}
+fc33d53b01f2291b09f2010bec5d15ca
+  pRoutes95 :: Yesod.Routes.TH.Types.ResourceTree typ
+  {- Strictness: m1,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.ResourceLeaf
+                   @ typ
+                   (Rotas.pRoutes96 @ typ)) -}
+213eacc41a51e8f056a6da337a637706
+  pRoutes96 :: Yesod.Routes.TH.Types.Resource typ
+  {- Strictness: m,
+     Unfolding: (\ @ typ ->
+                 Yesod.Routes.TH.Types.Resource
+                   @ typ
+                   Rotas.pRoutes97
+                   (GHC.Types.[] @ (Yesod.Routes.TH.Types.Piece typ))
+                   (Rotas.pRoutes55 @ typ)
+                   (GHC.Types.[] @ GHC.Base.String)
+                   GHC.Types.True) -}
+184bbcfe2d6f510a8dbc421fadbdcdc4
+  pRoutes97 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "HomeR"#) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

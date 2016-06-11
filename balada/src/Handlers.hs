@@ -1,6 +1,5 @@
 {-# LANGUAGE OverloadedStrings, QuasiQuotes,
              TemplateHaskell #-}
- 
 module Handlers where
 import Rotas
 import Yesod
@@ -10,21 +9,20 @@ import Control.Applicative
 import Data.Text
 import Text.Lucius
 import Text.Cassius
-
 import Database.Persist.Postgresql
 
 mkYesodDispatch "Balada" pRoutes
 
---Forms
-formPessoa :: Form T_cadastro_pessoa
-formPessoa = renderDivs $ T_pessoas <$>
+--FORMULARIOS
+formPessoa :: Form Pessoas
+formPessoa = renderDivs $ Pessoas <$>
     areq textField "CPF: " Nothing <*>
     areq textField "Nome: " Nothing <*>
     areq textField "Senha: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "E-mail: " Nothing <*>
     areq textField "DDD: " Nothing <*>
-    areq textField "Celular: " Nothing <*>
+    areq textField "Celular: " Nothing
 
 formEstabelecimento :: FormEstabelecimento
 formEstabelecimento = renderDivs $ T_estabelecimento <$>
@@ -32,12 +30,67 @@ formEstabelecimento = renderDivs $ T_estabelecimento <$>
     areq textField "Cidade: " Nothing <*>
     areq textField "Email: " Nothing <*>
     areq textField "DDD: " Nothing <*>
-    areq textField "Telefone: " Nothing <*>
+    areq textField "Telefone: " Nothing 
+
+--Form T_categoria_estab
+formCategoria :: FormCategoria
+    areq textField "Categoria: " Nothing 
+
+--Form T_sub_categ_estab
+formSubcategoria :: FormSubcategoria
+    areq (selectField listaCategoria) "Categoria" Nothing <*>
+    areq textField "Subcategoria: " Nothing
+
+--Form T_faixa_preco    
+formFaixapreco :: FormFaixapreco
+    areq textField "Nome: " Nothing <*>
+    areq textField "Valor Inicial: " Nothing <*>
+    areq textField "Valor Final: " Nothing 
     
---PAGINAS 
+formDia :: FormDia
+    areq textField "Dia: " Nothing 
+
+--Form T_F_interesse_pessoa
+formInteresse :: FormInteresse
+    areq (selectField listaCategoria) "Categoria" Nothing <*>
+    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
+    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
+    areq (selectField listaClassificacao) "Classificacao" Nothing 
+
+--Form T_F_estabelecimento
+formIstabelecimento :: FormIstabelecimento
+    areq (selectField listaCategoria) "Categoria" Nothing <*>
+    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
+    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
+    areq (selectField listaClassificacao) "Classificacao" Nothing <*>
+    area (selectField listaDia) "Dia" Nothing 
+    
+--Lista Drop Down
+-- testar o funfar
+listaCategoria = do 
+    categoria <- runDB $ selectList [] [Asc nome_categoria] optionsPairs
+    $ fmap(\x ->(nome_categoria $ entityVal x, entityKey x)) categoria
+    
+listaSubcategoria = do 
+    subcategoria <- runDB $ selectList [] [Asc nome_sub_categ] optionsPairs
+    $ fmap(\x ->(nome_sub_categ $ entityVal x, entityKey x)) subcategoria
+
+listaClassificacao = do
+    classificacao <- runDB $ selectList [] [Asc nome_classificacao] optionsPairs
+    $ fmap(\x ->(nome_classificacao $ entityVal x, entityKey x)) classificacao
+    
+listaFaixapreco = do
+    faixapreco <- runDB $ selectList [] [Asc nome_faixa_preco] optionsPairs
+    $ fmap(\x ->(nome_faixa_preco $ entityVal x, entityKey x)) faixapreco
+    
+listaDia = do
+    dia <- runDB $ selectList [] [Asc dc_dia] optionsPairs
+    $ fmap(\x ->(dc_dia $ entityVal x, entityKey x)) dia
+
+--PAGINAS
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do 
-            toWidget $(whamletFile "Hamlets/home.hamlet")-- >> toWidget $(cassiusFile"Lucius/home.cassius")
+            toWidget $(whamletFile "Hamlets/home.hamlet")
 
 getCadastroR :: Handler Html
 getCadastroR = defaultLayout $ do 
@@ -46,15 +99,13 @@ getCadastroR = defaultLayout $ do
 getAdministradorR :: Handler Html
 getAdministradorR = defaultLayout $ do 
                     toWidget $(whamletFile "Hamlets/cadastro.hamlet")
-                    
-
 
 --Alcool na mesa
 getCadpessoaR :: Handler Html
 getCadpessoaR = do 
     (widget, enctype) <-generateFormPost formPessoa
-    defaultLayout [whamlet |
-        <center> <form method=post enctype=#{enctype} action=@{CadpessoaR}>
+        defaultLayout [whamlet|
+            <center> <form method=post enctype=#{enctype} action=@{CadpessoaR}>
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro Completo
@@ -88,13 +139,13 @@ getCadsubcategR = do
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro de subcategoria Completo
-    |]
+|]
 
 getCaddiaR :: Handler Html 
 getCaddiaR = do
     (widget, enctype) <-generateFormPost formDia
-    defaultLayout [whamlet |
-        <center> <form method=post enctype=#{enctype} action=@{CaddiaR}>
+        defaultLayout [whamlet|
+            <center> <form method=post enctype=#{enctype} action=@{CaddiaR}>
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro de dia evento Completo
