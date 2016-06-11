@@ -131,6 +131,31 @@ postCadcategoriaR = do
     case result of
         FormSuccess categoria -> (runDB $ insert categoria) >> = cd_categoria_estab -> redirect (CadcategoriabR cd_categoria_estab)
         _ -> redirect ErroR
+        
+postCadsubcategR :: Handler Html
+postCadsubcategRaR = do
+    ((result, _),_) <- runFormPost formSubcategoria
+    case result of
+        FormSuccess subcategoria -> (runDB $ insert subcategoria) >> = cd_sub_categ_estab -> redirect (CadsubcategbR cd_sub_categ_estab)
+        _ -> redirect ErroR
+        
+postFaixaprecoR :: Handler Html
+postFaixaprecoR = do
+    ((result, _),_) <- runFormPost formFaixapreco
+    case result of
+        FormSuccess faixapreco -> (runDB $ insert faixapreco) >> = cd_faixa_preco -> redirect (CadfaixaprecoR cd_faixa_preco)
+        _ -> redirect ErroR
+    
+postCadclassificacaoR :: Handler Html
+postCadclassificacaoR = do
+    ((result, _),_) <- runFormPost formClassificacao
+    case result of
+        FormSuccess classificacao -> (runDB $ insert classificacao) >> = cd_classificacao_estab -> redirect (CadclassificacaoR cd_classificacao_estab)
+        _ -> redirect ErroR
+    
+
+    
+    
     
 --Limbo Mental
 getAdminR :: Handler Html
