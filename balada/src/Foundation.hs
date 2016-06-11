@@ -15,7 +15,7 @@ data Balada = Balada{connPool::ConnectionPool}
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 
 T_cadastro_pessoa json
-    cd_cpf_pessoa Text
+    cd_cpf_pessoa Text sqltype=varchar(11)
     nm_pessoa Text
     dc_senha Text
     nm_cidade Text
@@ -34,17 +34,16 @@ T_estabelecimento json
     cd_delecao Text
     
 T_categoria_estab json
-    cd_categoria_estab Text
     nm_categoria_estab Text
     
 T_sub_categ_estab json
     nm_sub_categ_estab Text
-    cd_categoria_estab Text
+    cd_categoria_estab T_categoria_estabId
 
 T_faixa_preco json
     nm_faixa_preco Text
-    qt_valor_minimo Text
-    qt_valor_maximo Text
+    qt_valor_minimo Float
+    qt_valor_maximo Float
 
 T_classificacao_estab json
     nm_classificacao_estab Text
@@ -55,7 +54,7 @@ T_dia_evento json
     dc_dia Text
     
 T_F_interesse_pessoa json
-    cd_cpf_pessoa Text
+    cd_cpf_pessoa Text sqltype=varchar(11)
     cd_categoria_estab Text
     cd_sub_categ_estab Text
     cd_faixa_preco Text
@@ -69,6 +68,7 @@ T_F_estabelecimento json
     cd_faixa_preco Text
     cd_dia Text
     cd_classificacao_estab Text
+    cd_delecao Text
 
 |]
 

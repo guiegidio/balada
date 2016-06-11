@@ -160,7 +160,12 @@ getCadfaixaprecoR = do
         <h1> Faixa de preco estabelecido
     |]
 
-
+--alcool na garrafa
+postCadpessoaR :: Handler Html
+postCadpessoaR = do
+    ((result, _),_) <- runFormPost formPessoa
+    case result of
+        FormSuccess pessoa -> (runDB $ inser pessoa) >> = cd_cpf_pessoa
 
 --Limbo Mental
 getAdminR :: Handler Html
