@@ -60,7 +60,7 @@ formInteresse = renderDivs $ Interesse
     areq (selectField listaCategoria) "Categoria" Nothing <*>
     areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
     areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
-    areq (selectField listaClassificacao) "Classificacao" Nothing 
+    areq (selectField listaClassificacao) "Classificacao" Nothing
 
 --Form T_F_estabelecimento
 formIstabelecimento :: Form T_F_estabelecimento
@@ -74,24 +74,24 @@ formIstabelecimento = renderDivs $ T_F_estabelecimento <$>
 --Lista Drop Down
 -- testar o funfar
 listaCategoria = do 
-    categoria <- runDB $ selectList [] [Asc nome_categoria] --optionsPairs
-    $ fmap(\x ->(nome_categoria $ entityVal x, entityKey x)) categoria
+    entidades <- runDB $ selectList [] [Asc Categoria_estabNome_categoria]
+    optionsPairs $ fmap(\ent -> (categoria_estabNome_categoria $ entityVal ent, entityKey ent)) entidades
     
 listaSubcategoria = do 
-    subcategoria <- runDB $ selectList [] [Asc nome_sub_categ] optionsPairs
-    $ fmap(\x ->(nome_sub_categ $ entityVal x, entityKey x)) subcategoria
+    entidades <- runDB $ selectList [] [Asc Sub_categ_estabNome_sub_categ] 
+    optionsPairs $ fmap(\ent ->(sub_categ_estabNome_sub_categ $ entityVal ent, entityKey ent)) entidades
 
 listaClassificacao = do
-    classificacao <- runDB $ selectList [] [Asc nome_classificacao] optionsPairs
-    $ fmap(\x ->(nome_classificacao $ entityVal x, entityKey x)) classificacao
+    entidades <- runDB $ selectList [] [Asc Classificacao_estabNome_classificacao] 
+    optionsPairs $ fmap(\ent ->(classificacao_estabNome_classificacao $ entityVal ent, entityKey ent)) entidades
     
 listaFaixapreco = do
-    faixapreco <- runDB $ selectList [] [Asc nome_faixa_preco] optionsPairs
-    $ fmap(\x ->(nome_faixa_preco $ entityVal x, entityKey x)) faixapreco
+    entidades <- runDB $ selectList [] [Asc Faixa_precoNome_faixa_preco] 
+    optionsPairs $ fmap(\ent ->(faixa_precoNome_faixa_preco $ entityVal ent, entityKey ent)) entidades
     
 listaDia = do
-    dia <- runDB $ selectList [] [Asc dc_dia] optionsPairs
-    $ fmap(\x ->(dc_dia $ entityVal x, entityKey x)) dia
+    entidades <- runDB $ selectList [] [Asc Dia_eventoDc_dia] 
+    optionsPairs $ fmap(\ent ->(dia_eventoDc_dia $ entityVal ent, entityKey ent)) entidades
 
 --PAGINAS
 getHomeR :: Handler Html
@@ -260,7 +260,7 @@ postLoginR = do
                        Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
 
 
-getPerfilR :: UsersId -> Handler Html
+getPerfilR :: PessoasId -> Handler Html
 getPerfilR uid = do
       user <- runDB $ get404 uid
       defaultLayout [whamlet|
