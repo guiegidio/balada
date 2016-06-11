@@ -1,0 +1,38 @@
+<doctype5>
+<body>
+<title>TP-Haskell - Guilherme Egídio, Luiz Fernando e Rafael Caichiolo
+<div id="header-wrapper"> 
+<div id="header" class="container">
+<div id="logo">
+<h1>Welcome to the Party!!!
+<p>Onde você encontra o rolê do seu jeito!
+<div id="menu">
+<ul>
+<li class="current_page_item"><a href=@{HomeR}>Início
+<li><a href=@{LoginR}>LOGIN>
+<li><a href=@{CadastroR}>CADASTRE-SE
+<li><a href=@{AboutR}>Saiba Mais
+<div id="banner" class="container">
+<div id="page" class="container">
+<div id="content">
+<div class="post">
+<h2 class="title"><a href=@{HomeR}>Welcome to the party!
+<div class="entry">
+<p>Saúde significa o estado de normalidade de funcionamento do organismo humano. Ter saúde é viver com boa disposição física e mental.
+<p>Além da boa disposição do corpo e da mente, a balada inclui a denifinção de felicidade e ajuda você a sair do stress do trabalho e daquela matéria da faculdade F@#$.
+<p>Uma boa festa te faz feliz, rende boas histórias, faz você não lembrar do afazeres semanais, dá aquele "UP" de animação necessário e ainda te mantém porreta da vida para sair por aí gritando pra todo mundo que você está bem e feliz! Até a ressaca do dia seguinte! ¯\_(?)_/¯
+<p>Sair com os amigos é bom para todos, até quando sai torto, afinal de contas ter alguém pra indicar que lado deve seguir é bom, ou pelo menos te jogar na frente de onde quando não tem ninguém na sua casa.
+<p>Por outro lado, quando você fica mal e todos ficam falando "chama o shamu" e você acorda no dia seguinte e ouve as histórias e lendas, dá vontade de matar todos os envolvidos, mas afinal o que é uma boa balada sem uma boa história?.
+<p>Estamos aqui presente para tirar sua vida do tédio e encontrar sua felicidade no bar ou balada mais próximos e MELHOR(!) do seu gosto! Então entre e divirta-se.
+<div style="clear: both;">&nbsp;
+<div id="sidebar">
+<div>
+<h2>Sites Relacionados
+<ul class="list-style1">
+<li><a href="http://www.melhoresbaladas.com.br/">Melhores Baladas
+<li><a href="https://www.djmag.com/">DJ Mag
+<li><a href="https://www.djmag.com/top100dj">Top 100 DJs
+<li><a href="https://www.djmag.com/top100clubs">Top 100 Baladas
+<div style="clear: both;">&nbsp;
+<div id="footer">
+<p>© 2016 Preguiça Inc. Toda preguiça reservada por <a href="https://www.facebook.com/guilhermeex" real="nofollow"> Guilherme Egídio, <a href="https://www.facebook.com/lbarros94" rel="nofollow"> Luiz Fernando e <a href="https://www.facebook.com/rafael.caichiolo" real="nofollow">.  Fotos do <a href="www.google.com">Google
