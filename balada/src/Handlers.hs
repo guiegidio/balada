@@ -124,7 +124,7 @@ getCadcategoriaR = do
         <center> <form method=post enctype=#{enctype} action=@{CadcategoriabR}>
             ^{widget}
             <input type="submit" value="Enviar">
-        <h1> Cadastro de estabelecimento Completo
+        <h1> Cadastro de categoria Completo
     |]
     
 
