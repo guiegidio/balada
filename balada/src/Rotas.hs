@@ -13,7 +13,7 @@ pRoutes = [parseRoutes|
   /about AboutR GET
   /admin AdminR GET 
   /logout LogoutR GET
-  /cadPessoa CadPessoaR GET POST
+  /cadpessoa CadpessoaR GET POST
   /cadestab CadestabR GET POST
   /cadcategoria CadcategoriaR GET POST
   /cadsubcateg CadsubcategR GET POST
