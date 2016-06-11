@@ -24,8 +24,8 @@ formPessoa = renderDivs $ Pessoas <$>
     areq textField "DDD: " Nothing <*>
     areq textField "Celular: " Nothing
 
-formEstabelecimento :: FormEstabelecimento
-formEstabelecimento = renderDivs $ T_estabelecimento <$>
+formEstabelecimento :: Form Estabelecimento
+formEstabelecimento = renderDivs $ Estabelecimento <$>
     areq textField "Nome: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "Email: " Nothing <*>
@@ -33,42 +33,48 @@ formEstabelecimento = renderDivs $ T_estabelecimento <$>
     areq textField "Telefone: " Nothing 
 
 --Form T_categoria_estab
-formCategoria :: FormCategoria
+formCategoria :: Form Categoria_estab
+formCategoria = renderDivs $ Categoria_estab <$>
     areq textField "Categoria: " Nothing 
 
 --Form T_sub_categ_estab
-formSubcategoria :: FormSubcategoria
+formSubcategoria :: Form Sub_categ_estab
+formSubcategoria = renderDivs $ Sub_categ_estab <$>
     areq (selectField listaCategoria) "Categoria" Nothing <*>
     areq textField "Subcategoria: " Nothing
 
 --Form T_faixa_preco    
-formFaixapreco :: FormFaixapreco
+formFaixapreco :: Form Faixa_preco
+formFaixapreco =  renderDivs $ Faixa_preco <$>
     areq textField "Nome: " Nothing <*>
     areq textField "Valor Inicial: " Nothing <*>
     areq textField "Valor Final: " Nothing 
     
-formDia :: FormDia
+formDia :: Form Dia_evento
+formDia =  renderDivs $ Dia_evento <$>
     areq textField "Dia: " Nothing 
 
 --Form T_F_interesse_pessoa
-formInteresse :: FormInteresse
+formInteresse :: Form Interesse
+formInteresse = renderDivs $ Interesse
     areq (selectField listaCategoria) "Categoria" Nothing <*>
     areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
     areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
     areq (selectField listaClassificacao) "Classificacao" Nothing 
 
 --Form T_F_estabelecimento
-formIstabelecimento :: FormIstabelecimento
+formIstabelecimento :: Form T_F_estabelecimento
+formIstabelecimento = renderDivs $ T_F_estabelecimento <$>
     areq (selectField listaCategoria) "Categoria" Nothing <*>
     areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
     areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
     areq (selectField listaClassificacao) "Classificacao" Nothing <*>
-    area (selectField listaDia) "Dia" Nothing 
+    areq (selectField listaDia) "Dia" Nothing 
     
 --Lista Drop Down
 -- testar o funfar
 listaCategoria = do 
-    categoria <- runDB $ selectList [] [Asc nome_categoria] optionsPairs
+    categoria <- runDB $ selectList [] [Asc nome_categoria] --optionsPairs
     $ fmap(\x ->(nome_categoria $ entityVal x, entityKey x)) categoria
     
 listaSubcategoria = do 
@@ -109,32 +115,32 @@ getCadpessoaR = do
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro Completo
-    |]
+   |]
 
 getCadestabR :: Handler Html
 getCadestabR = do 
     (widget, enctype) <-generateFormPost formEstabelecimento
-    defaultLayout [whamlet |
+    defaultLayout [whamlet|
         <center> <form method=post enctype=#{enctype} action=@{CadestabR}>
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro de estabelecimento Completo
-    |]
+   |]
     
 getCadcategoriaR :: Handler Html
 getCadcategoriaR = do 
     (widget, enctype) <-generateFormPost formCategoria
-    defaultLayout [whamlet |
+    defaultLayout [whamlet|
         <center> <form method=post enctype=#{enctype} action=@{CadcategoriabR}>
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro de categoria Completo
-    |]
+   |]
 
 getCadsubcategR :: Handler Html
 getCadsubcategR = do
     (widget, enctype) <-generateFormPost formSubcategoria
-    defaultLayout [whamlet |
+    defaultLayout [whamlet|
         <center> <form method=post enctype=#{enctype} action=@{CadsubcategbR}>
             ^{widget}
             <input type="submit" value="Enviar">
@@ -149,59 +155,59 @@ getCaddiaR = do
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Cadastro de dia evento Completo
-    |]
+   |]
 
 getCadfaixaprecoR :: Handler Html    
 getCadfaixaprecoR = do
     (widget, enctype) <-generateFormPost formFaixapreco
-    defaultLayout [whamlet |
+    defaultLayout [whamlet|
         <center> <form method=post enctype=#{enctype} action=@{CadfaixaprecoR}>
             ^{widget}
             <input type="submit" value="Enviar">
         <h1> Faixa de preco estabelecido
-    |]
+   |]
 
 --alcool na garrafa
 postCadpessoaR :: Handler Html
 postCadpessoaR = do
     ((result, _),_) <- runFormPost formPessoa
     case result of
-        FormSuccess pessoa -> (runDB $ insert pessoa) >> = cd_cpf_pessoa -> redirect (CadpessoaR cd_cpf_pessoa)
+        FormSuccess pessoa -> (runDB $ insert pessoa) >>= \cpf_pessoa -> redirect (CadpessoaR cpf_pessoa)
         _ -> redirect ErroR
         
 postCadestabR :: Handler Html
 postCadestabR = do
     ((result, _),_) <- runFormPost formEstabelecimento
     case result of
-        FormSuccess estab -> (runDB $ insert estab) >> = cd_estabelecimento -> redirect (CadestabR cd_estabelecimento)
+        FormSuccess estab -> (runDB $ insert estab) >>= \cd_estabelecimento -> redirect (CadestabR cd_estabelecimento)
         _ -> redirect ErroR
 
 postCadcategoriaR :: Handler Html
 postCadcategoriaR = do
     ((result, _),_) <- runFormPost formCategoria
     case result of
-        FormSuccess categoria -> (runDB $ insert categoria) >> = cd_categoria_estab -> redirect (CadcategoriabR cd_categoria_estab)
+        FormSuccess categoria -> (runDB $ insert categoria) >>= \cd_categoria_estab -> redirect (CadcategoriabR cd_categoria_estab)
         _ -> redirect ErroR
         
 postCadsubcategR :: Handler Html
 postCadsubcategRaR = do
     ((result, _),_) <- runFormPost formSubcategoria
     case result of
-        FormSuccess subcategoria -> (runDB $ insert subcategoria) >> = cd_sub_categ_estab -> redirect (CadsubcategbR cd_sub_categ_estab)
+        FormSuccess subcategoria -> (runDB $ insert subcategoria) >>= \cd_sub_categ_estab -> redirect (CadsubcategbR cd_sub_categ_estab)
         _ -> redirect ErroR
         
 postFaixaprecoR :: Handler Html
 postFaixaprecoR = do
     ((result, _),_) <- runFormPost formFaixapreco
     case result of
-        FormSuccess faixapreco -> (runDB $ insert faixapreco) >> = cd_faixa_preco -> redirect (CadfaixaprecoR cd_faixa_preco)
+        FormSuccess faixapreco -> (runDB $ insert faixapreco) >>= \cd_faixa_preco -> redirect (CadfaixaprecoR cd_faixa_preco)
         _ -> redirect ErroR
     
 postCadclassificacaoR :: Handler Html
 postCadclassificacaoR = do
     ((result, _),_) <- runFormPost formClassificacao
     case result of
-        FormSuccess classificacao -> (runDB $ insert classificacao) >> = cd_classificacao_estab -> redirect (CadclassificacaoR cd_classificacao_estab)
+        FormSuccess classificacao -> (runDB $ insert classificacao) >>= \cd_classificacao_estab -> redirect (CadclassificacaoR cd_classificacao_estab)
         _ -> redirect ErroR
     
 
@@ -223,7 +229,7 @@ getCadastrarR = do
                      ^{widget}
                      <input type="submit" value="Enviar">
             <a href=@{HomeR}>Back Home
-           |]
+          |]
 
 postCadastrarR :: Handler Html
 postCadastrarR = do
@@ -240,7 +246,7 @@ getLoginR = do
                      ^{widget}
                      <input type="submit" value="Login">
                     <a href=@{HomeR}>Pagina Inicial
-            |]
+           |]
 
 postLoginR :: Handler Html
 postLoginR = do
@@ -260,7 +266,7 @@ getPerfilR uid = do
       defaultLayout [whamlet|
           <p><b> Pagina de #{usersNome user}
           <p><b> Login: #{usersLogin user}
-      |]
+     |]
 
 getErroR :: Handler Html
 getErroR = defaultLayout [whamlet|
@@ -272,7 +278,7 @@ getLogoutR = do
      deleteSession "_ID"
      defaultLayout [whamlet| 
          <h1> ADEUS!
-     |]
+    |]
      
 
 getAboutR = defaultLayout [whamlet|
