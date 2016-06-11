@@ -43,7 +43,10 @@ formSubcategoria :: Form T_sub_categ_estab
 formFaixapreco :: Form T_faixa_preco
     areq textField "Nome: " Nothing <*>
     areq textField "Valor Inicial: " Nothing <*>
-    areq textField "Valor Final: " Nothing <*
+    areq textField "Valor Final: " Nothing <*>
+
+formDia :: Form T_dia_evento
+    areq textField "Dia: " Nothing <*>
 
 formInteresse :: Form T_F_interesse_pessoa
     areq (selectField listaCategoria) "Categoria" Nothing <*>
@@ -126,8 +129,36 @@ getCadcategoriaR = do
             <input type="submit" value="Enviar">
         <h1> Cadastro de categoria Completo
     |]
-    
 
+getCadsubcategR :: Handler Html
+getCadsubcategR = do
+    (widget, enctype) <-generateFormPost formSubcategoria
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CadsubcategbR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Cadastro de subcategoria Completo
+    |]
+
+getCaddiaR :: Handler Html 
+getCaddiaR = do
+    (widget, enctype) <-generateFormPost formDia
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CaddiaR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Cadastro de dia evento Completo
+    |]
+
+getCadfaixaprecoR :: Handler Html    
+getCadfaixaprecoR = do
+    (widget, enctype) <-generateFormPost formFaixapreco
+    defaultLayout [whamlet |
+        <center> <form method=post enctype=#{enctype} action=@{CadfaixaprecoR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+        <h1> Faixa de preco estabelecido
+    |]
 
 --Limbo Mental
 getAdminR :: Handler Html
