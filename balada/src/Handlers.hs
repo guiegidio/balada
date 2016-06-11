@@ -165,8 +165,10 @@ postCadpessoaR :: Handler Html
 postCadpessoaR = do
     ((result, _),_) <- runFormPost formPessoa
     case result of
-        FormSuccess pessoa -> (runDB $ inser pessoa) >> = cd_cpf_pessoa
-
+        FormSuccess pessoa -> (runDB $ inser pessoa) >> = cd_cpf_pessoa -> redirect (CadpessoaR cd_cpf_pessoa)
+        _ -> redirect ErroR
+        
+    
 --Limbo Mental
 getAdminR :: Handler Html
 getAdminR = defaultLayout [whamlet|
