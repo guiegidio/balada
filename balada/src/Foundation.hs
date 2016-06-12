@@ -16,12 +16,13 @@ share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 Pessoas json
     cpf_pessoa Text sqltype=varchar(11)
     nome Text
+    login Text
     senha Text
     cidade Text
     email Text
     ddd Text
     celular Text
-    delecao Text
+    --delecao Text
     deriving Show
     
 Estabelecimento json
@@ -30,7 +31,7 @@ Estabelecimento json
     email_estab Text
     ddd_estab Text
     telefone_estab Text
-    delecao_estab Text
+    --delecao_estab Text
     deriving Show
     
 Categoria_estab json

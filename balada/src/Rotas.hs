@@ -7,7 +7,6 @@ import Yesod
 pRoutes = [parseRoutes|
 / HomeR GET
   /cadastro CadastroR GET 
---  /administrador AdministradoR GET 
   /perfil/#PessoasId PerfilR GET
   /login LoginR GET POST
   /erro ErroR GET
@@ -20,6 +19,6 @@ pRoutes = [parseRoutes|
   /cadsubcateg CadsubcategR GET POST
   /caddia CaddiaR GET POST
   /cadfaixapreco CadfaixaprecoR GET POST
-  /cadistabelecimento CadistabelecimentoR GET POST
+--  /cadistabelecimento CadistabelecimentoR GET POST
   
 |]

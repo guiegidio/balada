@@ -18,7 +18,8 @@ formPessoa :: Form Pessoas
 formPessoa = renderDivs $ Pessoas <$>
     areq textField "CPF: " Nothing <*>
     areq textField "Nome: " Nothing <*>
-    areq textField "Senha: " Nothing <*>
+    areq textField "Login " Nothing <*>
+    areq passwordField "Senha: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "E-mail: " Nothing <*>
     areq textField "DDD: " Nothing <*>
@@ -40,7 +41,7 @@ formCategoria = renderDivs $ Categoria_estab <$>
 --Form T_sub_categ_estab
 formSubcategoria :: Form Sub_categ_estab
 formSubcategoria = renderDivs $ Sub_categ_estab <$>
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
+    areq textField "Categoria" Nothing <*>
     areq textField "Subcategoria: " Nothing
 
 --Form T_faixa_preco    
@@ -55,23 +56,7 @@ formDia =  renderDivs $ Dia_evento <$>
     areq textField "Dia: " Nothing 
 
 --Form T_F_interesse_pessoa
-formInteresse :: Form Interesse
-formInteresse = renderDivs $ Interesse
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
-    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
-    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
-    areq (selectField listaClassificacao) "Classificacao" Nothing
 
---Form T_F_estabelecimento
-formIstabelecimento :: Form T_F_estabelecimento
-formIstabelecimento = renderDivs $ T_F_estabelecimento <$>
-    areq (selectField listaEstabalecimento) "Estabelecimento" Nothing <*>
-    areq (selectField listaCategoria) "Categoria" Nothing <*>
-    areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
-    areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
-    areq (selectField listaClassificacao) "Classificacao" Nothing <*>
-    areq (selectField listaDia) "Dia" Nothing 
-    
 --Form Login
 formLogin :: Form (Text,Text)
 formLogin = renderDivs $ (,) <$>
@@ -80,29 +65,29 @@ formLogin = renderDivs $ (,) <$>
     
 --Lista Drop Down
 -- testar o funfar
-listaEstabalecimento = do 
-    entidades <- runDB $ selectList [] [Asc EstabelecimentoNome_estab]
-    optionsPairs $ fmap(\ent -> (estabelecimentoNome_estab $ entityVal ent, entityKey ent)) entidades
+estabs = do 
+        entidades <- runDB $ selectList [] [Asc EstabelecimentoNome_estab]
+        optionsPairs $ fmap(\ent -> (estabelecimentoNome_estab $ entityVal ent, entityKey ent)) entidades
 
-listaCategoria = do 
-    entidades <- runDB $ selectList [] [Asc Categoria_estabNome_categoria]
-    optionsPairs $ fmap(\ent -> (categoria_estabNome_categoria $ entityVal ent, entityKey ent)) entidades
+categs = do 
+        entidades <- runDB $ selectList [] [Asc Categoria_estabNome_categoria]
+        optionsPairs $ fmap(\ent -> (categoria_estabNome_categoria $ entityVal ent, entityKey ent)) entidades
     
 listaSubcategoria = do 
-    entidades <- runDB $ selectList [] [Asc Sub_categ_estabNome_sub_categ] 
-    optionsPairs $ fmap(\ent ->(sub_categ_estabNome_sub_categ $ entityVal ent, entityKey ent)) entidades
+                   entidades <- runDB $ selectList [] [Asc Sub_categ_estabNome_sub_categ] 
+                   optionsPairs $ fmap(\ent ->(sub_categ_estabNome_sub_categ $ entityVal ent, entityKey ent)) entidades
 
 listaClassificacao = do
-    entidades <- runDB $ selectList [] [Asc Classificacao_estabNome_classificacao] 
-    optionsPairs $ fmap(\ent ->(classificacao_estabNome_classificacao $ entityVal ent, entityKey ent)) entidades
+                    entidades <- runDB $ selectList [] [Asc Classificacao_estabNome_classificacao] 
+                    optionsPairs $ fmap(\ent ->(classificacao_estabNome_classificacao $ entityVal ent, entityKey ent)) entidades
     
 listaFaixapreco = do
-    entidades <- runDB $ selectList [] [Asc Faixa_precoNome_faixa_preco] 
-    optionsPairs $ fmap(\ent ->(faixa_precoNome_faixa_preco $ entityVal ent, entityKey ent)) entidades
+                 entidades <- runDB $ selectList [] [Asc Faixa_precoNome_faixa_preco] 
+                 optionsPairs $ fmap(\ent ->(faixa_precoNome_faixa_preco $ entityVal ent, entityKey ent)) entidades
     
 listaDia = do
-    entidades <- runDB $ selectList [] [Asc Dia_eventoDc_dia] 
-    optionsPairs $ fmap(\ent ->(dia_eventoDc_dia $ entityVal ent, entityKey ent)) entidades
+          entidades <- runDB $ selectList [] [Asc Dia_eventoDc_dia] 
+          optionsPairs $ fmap(\ent ->(dia_eventoDc_dia $ entityVal ent, entityKey ent)) entidades
 
 --PAGINAS
 getHomeR :: Handler Html
@@ -178,68 +163,52 @@ getCadfaixaprecoR = do
         <h1> Faixa de preco estabelecido
 |]
 
-getCadistabelecimentoR :: Handler Html    
-getCadistabelecimentoR = do
-    (widget, enctype) <-generateFormPost formIstabelecimento
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadistabelecimentoR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Estabelcimento recebeu parâmetros
-|]
 
 --alcool na garrafa
 postCadpessoaR :: Handler Html
 postCadpessoaR = do
     ((result, _),_) <- runFormPost formPessoa
     case result of
-        FormSuccess pessoa -> (runDB $ insert pessoa) >>= \cpf_pessoa -> redirect (CadpessoaR cpf_pessoa)
+        FormSuccess pessoa -> (runDB $ insert pessoa) >>= \cpf_pessoa -> redirect (CadpessoaR)
         _ -> redirect ErroR
         
 postCadestabR :: Handler Html
 postCadestabR = do
     ((result, _),_) <- runFormPost formEstabelecimento
     case result of
-        FormSuccess estab -> (runDB $ insert estab) >>= \cd_estabelecimento -> redirect (CadestabR cd_estabelecimento)
+        FormSuccess estab -> (runDB $ insert estab) >>= \cd_estabelecimento -> redirect (CadestabR)
         _ -> redirect ErroR
 
 postCadcategoriaR :: Handler Html
 postCadcategoriaR = do
     ((result, _),_) <- runFormPost formCategoria
     case result of
-        FormSuccess categoria -> (runDB $ insert categoria) >>= \cd_categoria_estab -> redirect (CadcategoriaR cd_categoria_estab)
+        FormSuccess categoria -> (runDB $ insert categoria) >>= \cd_categoria_estab -> redirect (CadcategoriaR)
         _ -> redirect ErroR
         
 postCadsubcategR :: Handler Html
 postCadsubcategR = do
     ((result, _),_) <- runFormPost formSubcategoria
     case result of
-        FormSuccess subcategoria -> (runDB $ insert subcategoria) >>= \cd_sub_categ_estab -> redirect (CadsubcategR cd_sub_categ_estab)
+        FormSuccess subcategoria -> (runDB $ insert subcategoria) >>= \cd_sub_categ_estab -> redirect (CadsubcategR)
         _ -> redirect ErroR
         
-postFaixaprecoR :: Handler Html
-postFaixaprecoR = do
+postCadfaixaprecoR :: Handler Html
+postCadfaixaprecoR = do
     ((result, _),_) <- runFormPost formFaixapreco
     case result of
-        FormSuccess faixapreco -> (runDB $ insert faixapreco) >>= \cd_faixa_preco -> redirect (CadfaixaprecoR cd_faixa_preco)
+        FormSuccess faixapreco -> (runDB $ insert faixapreco) >>= \cd_faixa_preco -> redirect (CadfaixaprecoR)
         _ -> redirect ErroR
         
 postCaddiaR :: Handler Html
 postCaddiaR = do
     ((result, _),_) <- runFormPost formDia
     case result of
-        FormSuccess dia -> (runDB $ insert dia) >>= \cd_dia -> redirect (CadfaixaprecoR cd_dia)
+        FormSuccess dia -> (runDB $ insert dia) >>= \cd_dia -> redirect (CadfaixaprecoR)
         _ -> redirect ErroR
 
 
-postIstabelecimentoR :: Handler Html
-postIstabelecimentoR = do
-    ((result, _),_) <- runFormPost formIstabelecimento
-    case result of
-        FormSuccess istabelecimento -> (runDB $ insert istabelecimento) >>= \cd_istabelecimento -> redirect (CadistabelecimentoR cd_istabelecimento)
-        _ -> redirect ErroR
-    
-    
+
 --Limbo Mental
 getAdminR :: Handler Html
 getAdminR = defaultLayout [whamlet|
@@ -268,7 +237,13 @@ postLoginR = do
                        Nothing -> redirect LoginR
                        Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
 
-
+getPerfilR :: PessoasId -> Handler Html
+getPerfilR uid = do
+      pessoas <- runDB $ get404 uid
+      defaultLayout [whamlet|
+          <p><b> Pagina de #{pessoasNome pessoas}
+          <p><b> Login: #{pessoasLogin pessoas}
+      |]
 
 getErroR :: Handler Html
 getErroR = defaultLayout [whamlet|
