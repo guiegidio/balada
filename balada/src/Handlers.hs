@@ -235,7 +235,7 @@ postLoginR = do
            case result of 
                FormSuccess ("admin","admin") -> setSession "_ID" "admin" >> redirect AdminR
                FormSuccess (login,senha) -> do 
-                   user <- runDB $ selectFirst [UsersLogin ==. login, UsersSenha ==. senha] []
+                   user <- runDB $ selectFirst [PessoasEmail ==. login, PessoasSenha ==. senha] []
                    case user of
                        Nothing -> redirect LoginR
                        Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
