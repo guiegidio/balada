@@ -10,7 +10,7 @@
 <ul>
 <li class="current_page_item"><a href=>Início
 <li><a href=@{LoginR}>LOGIN>
-<li><a href=@{CadpessoaR}>CADASTRE-SE
+<li><a href=@{CadastroR}>CADASTRE-SE
 <li><a href=@{AboutR}>Saiba Mais
 <div id="banner" class="container">
 <div class="image-style"><img src="" width="970" height="320" alt="" />
