@@ -65,6 +65,7 @@ formInteresse = renderDivs $ Interesse
 --Form T_F_estabelecimento
 formIstabelecimento :: Form T_F_estabelecimento
 formIstabelecimento = renderDivs $ T_F_estabelecimento <$>
+    areq (selectField listaEstabalecimento) "Estabelecimento" Nothing <*>
     areq (selectField listaCategoria) "Categoria" Nothing <*>
     areq (selectField listaSubcategoria) "Subcategoria" Nothing <*>
     areq (selectField listaFaixapreco) "Faixa Preco" Nothing <*>
@@ -79,6 +80,10 @@ formLogin = renderDivs $ (,) <$>
     
 --Lista Drop Down
 -- testar o funfar
+listaEstabalecimento = do 
+    entidades <- runDB $ selectList [] [Asc EstabelecimentoNome_estab]
+    optionsPairs $ fmap(\ent -> (estabelecimentoNome_estab $ entityVal ent, entityKey ent)) entidades
+
 listaCategoria = do 
     entidades <- runDB $ selectList [] [Asc Categoria_estabNome_categoria]
     optionsPairs $ fmap(\ent -> (categoria_estabNome_categoria $ entityVal ent, entityKey ent)) entidades
@@ -108,9 +113,9 @@ getCadastroR :: Handler Html
 getCadastroR = defaultLayout $ do 
                 toWidget $(whamletFile "Hamlets/cadastro.hamlet")
 
-getAdministradorR :: Handler Html
-getAdministradorR = defaultLayout $ do 
-                    toWidget $(whamletFile "Hamlets/administrador.hamlet")
+--getAdministradorR :: Handler Html
+--getAdministradorR = defaultLayout $ do 
+  --                  toWidget $(whamletFile "Hamlets/administrador.hamlet")
 
 --Alcool na mesa
 getCadpessoaR :: Handler Html
@@ -173,6 +178,16 @@ getCadfaixaprecoR = do
         <h1> Faixa de preco estabelecido
 |]
 
+getCadistabelecimentoR :: Handler Html    
+getCadistabelecimentoR = do
+    (widget, enctype) <-generateFormPost formIstabelecimento
+    defaultLayout [whamlet|
+        <center> <form method=post enctype=#{enctype} action=@{CadistabelecimentoR}>
+        ^{widget}
+        <input type="submit" value="Enviar">
+        <h1> Estabelcimento recebeu parâmetros
+|]
+
 --alcool na garrafa
 postCadpessoaR :: Handler Html
 postCadpessoaR = do
@@ -208,8 +223,21 @@ postFaixaprecoR = do
     case result of
         FormSuccess faixapreco -> (runDB $ insert faixapreco) >>= \cd_faixa_preco -> redirect (CadfaixaprecoR cd_faixa_preco)
         _ -> redirect ErroR
-    
+        
+postCaddiaR :: Handler Html
+postCaddiaR = do
+    ((result, _),_) <- runFormPost formDia
+    case result of
+        FormSuccess dia -> (runDB $ insert dia) >>= \cd_dia -> redirect (CadfaixaprecoR cd_dia)
+        _ -> redirect ErroR
 
+
+postIstabelecimentoR :: Handler Html
+postIstabelecimentoR = do
+    ((result, _),_) <- runFormPost formIstabelecimento
+    case result of
+        FormSuccess istabelecimento -> (runDB $ insert istabelecimento) >>= \cd_istabelecimento -> redirect (CadistabelecimentoR cd_istabelecimento)
+        _ -> redirect ErroR
     
     
 --Limbo Mental

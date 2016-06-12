@@ -25,7 +25,6 @@ Pessoas json
     deriving Show
     
 Estabelecimento json
-    numero_estab Text
     nome_estab Text
     cidade_estab Text
     email_estab Text

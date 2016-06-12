@@ -31,7 +31,7 @@
 <form method=post enctype="multipart/form-data" action=@{CadestabR $ id}>
 <input type="submit" name="cadastrar">
 <input type="text" name="Fato estabelecimento">
-<form method=post enctype="multipart/form-data" action=@{CadFestabelecimentoR $ id}>
+<form method=post enctype="multipart/form-data" action=@{CadistabelecimentoR $ id}>
 <input type="submit" name="cadastrar">
 
 
