@@ -18,20 +18,20 @@
 <div class="post">
 <h2 class="title"><a href=@{HomeR}>Welcome to the party!
 <div class="entry">
-<input type="text" name="categoria">
-<form method=post enctype=#{enctype} action=@{CadcategoriabR $ aid}>
+<input type="text" name="Categoria">
+<form method=post enctype="multipart/form-data" action=@{CadcategoriaR $ id}>
 <input type="submit" name="cadastrar">
-<input type="text" name="sub-categoria">
-<form method=post enctype=#{enctype} action=@{CadsubcategbR $ aid}>
+<input type="text" name="Sub-categoria">
+<form method=post enctype="multipart/form-data" action=@{CadsubcategR $ id}>
 <input type="submit" name="cadastrar">
-<input type="text" name="faixa preco">
-<form method=post enctype=#{enctype} action=@{CadfaixaprecoR $ aid}>
+<input type="text" name="Faixa preco">
+<form method=post enctype="multipart/form-data" action=@{CadfaixaprecoR $ id}>
 <input type="submit" name="cadastrar">
-<input type="text" name="estabelecimento">
-<form method=post enctype=#{enctype} action=@{CadestabR $ aid}>
+<input type="text" name="Estabelecimento">
+<form method=post enctype="multipart/form-data" action=@{CadestabR $ id}>
 <input type="submit" name="cadastrar">
 <input type="text" name="Fato estabelecimento">
-<form method=post enctype=#{enctype} action=@{CadFestabelecimentoR $ aid}>
+<form method=post enctype="multipart/form-data" action=@{CadFestabelecimentoR $ id}>
 <input type="submit" name="cadastrar">
 
 

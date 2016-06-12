@@ -110,7 +110,7 @@ getCadastroR = defaultLayout $ do
 
 getAdministradorR :: Handler Html
 getAdministradorR = defaultLayout $ do 
-                    toWidget $(whamletFile "Hamlets/cadastro.hamlet")
+                    toWidget $(whamletFile "Hamlets/administrador.hamlet")
 
 --Alcool na mesa
 getCadpessoaR :: Handler Html
