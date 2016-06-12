@@ -5,8 +5,8 @@ module Rotas where
 import Yesod
  
 pRoutes = [parseRoutes|
-/ HomeR GET
-  /cadastro CadastroR GET 
+  / HomeR GET
+--  /cadastro CadastroR GET 
   /perfil/#PessoasId PerfilR GET
   /login LoginR GET POST
   /erro ErroR GET

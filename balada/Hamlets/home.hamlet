@@ -10,5 +10,10 @@
 <ul>
 <li class="current_page_item"><a href=@{HomeR}>Início
 <li><a href=@{LoginR}>LOGIN>
-<li><a href=@{CadastroR}>CADASTRE-SE
+<li><a href=@{CadpessoaR}>CADASTRE-SE
+<li><a href=@{CadestabR}>Cadastro estabelecimento
+<li><a href=@{CadcategoriaR}>Cadastro categoria
+<li><a href=@{CadsubcategR}>Cadastro SubCategoria
+<li><a href=@{CaddiaR}>Cadastro dia
+<li><a href=@{CadfaixaprecoR}>Cadastro de preços
 <li><a href=@{AboutR}>Saiba Mais

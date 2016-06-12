@@ -16,7 +16,11 @@ mkYesodDispatch "Balada" pRoutes
 --FORMULARIOS
 formPessoa :: Form Pessoas
 formPessoa = renderDivs $ Pessoas <$>
-    areq textField "CPF: " Nothing <*>
+    areq textField FieldSettings{fsId=Just "hident2",
+                           fsLabel="CPF",
+                           fsTooltip= Nothing,
+                           fsName= Nothing,
+                           fsAttrs=[("maxlength","11")]} Nothing<*>
     areq textField "Nome: " Nothing <*>
     areq textField "Login " Nothing <*>
     areq passwordField "Senha: " Nothing <*>
@@ -94,9 +98,9 @@ getHomeR :: Handler Html
 getHomeR = defaultLayout $ do 
             toWidget $(whamletFile "Hamlets/home.hamlet")
 
-getCadastroR :: Handler Html
-getCadastroR = defaultLayout $ do 
-                toWidget $(whamletFile "Hamlets/cadastro.hamlet")
+--getCadastroR :: Handler Html
+--getCadastroR = defaultLayout $ do 
+--                toWidget $(whamletFile "Hamlets/cadastro.hamlet")
 
 --getAdministradorR :: Handler Html
 --getAdministradorR = defaultLayout $ do 
