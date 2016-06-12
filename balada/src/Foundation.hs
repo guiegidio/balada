@@ -7,10 +7,11 @@ import Rotas
 import Yesod
 import Data.Text
 import Prelude
+import Yesod.Static
 import Database.Persist.Postgresql
     ( ConnectionPool, SqlBackend, runSqlPool, runMigration )
 
-data Balada = Balada{connPool::ConnectionPool}
+data Balada = Balada{getStatic :: Static, connPool::ConnectionPool}
 
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 Pessoas json
@@ -77,6 +78,8 @@ T_F_estabelecimento json
     cd_delecao Text
     deriving Show
 |]
+
+staticFiles "static"
 
 mkYesodData "Balada" pRoutes
 

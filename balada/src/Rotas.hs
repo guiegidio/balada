@@ -3,10 +3,10 @@
 module Rotas where
 
 import Yesod
+import Yesod.Static
  
 pRoutes = [parseRoutes|
   / HomeR GET
---  /cadastro CadastroR GET 
   /perfil/#PessoasId PerfilR GET
   /login LoginR GET POST
   /erro ErroR GET
@@ -19,6 +19,6 @@ pRoutes = [parseRoutes|
   /cadsubcateg CadsubcategR GET POST
   /caddia CaddiaR GET POST
   /cadfaixapreco CadfaixaprecoR GET POST
---  /cadistabelecimento CadistabelecimentoR GET POST
-  
+
+  /static StaticR Static getStatic
 |]

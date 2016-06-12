@@ -7,6 +7,7 @@ import Foundation
 import Control.Monad.Logger (runStdoutLoggingT)
 import Control.Applicative
 import Data.Text
+import Yesod.Static
 import Text.Lucius
 import Text.Cassius
 import Database.Persist.Postgresql
@@ -96,6 +97,7 @@ listaDia = do
 --PAGINAS
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do 
+            addStylesheet $ StaticR style_css
             toWidget $(whamletFile "Hamlets/home.hamlet")
 
 --getCadastroR :: Handler Html
