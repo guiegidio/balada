@@ -19,6 +19,7 @@ pRoutes = [parseRoutes|
   /cadsubcateg CadsubcategR GET POST
   /caddia CaddiaR GET POST
   /cadfaixapreco CadfaixaprecoR GET POST
-
+  /listaestabs ListaestabsR GET
+  
   /static StaticR Static getStatic
 |]

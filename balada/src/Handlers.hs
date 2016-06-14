@@ -36,7 +36,9 @@ formEstabelecimento = renderDivs $ Estabelecimento <$>
     areq textField "Cidade: " Nothing <*>
     areq textField "Email: " Nothing <*>
     areq textField "DDD: " Nothing <*>
-    areq textField "Telefone: " Nothing 
+    areq textField "Telefone: " Nothing <*>
+    areq (selectField categs) "Categoria: " Nothing <*>
+    areq (selectField listaFaixapreco) "Preço: " Nothing
 
 --Form T_categoria_estab
 formCategoria :: Form Categoria_estab
@@ -97,37 +99,23 @@ listaDia = do
 --PAGINAS
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do 
-            addStylesheet $ StaticR style_css
-            toWidget $(whamletFile "Hamlets/home.hamlet")
-
---getCadastroR :: Handler Html
---getCadastroR = defaultLayout $ do 
---                toWidget $(whamletFile "Hamlets/cadastro.hamlet")
-
---getAdministradorR :: Handler Html
---getAdministradorR = defaultLayout $ do 
-  --                  toWidget $(whamletFile "Hamlets/administrador.hamlet")
+          addStylesheet $ StaticR style_css
+          toWidget $ $(whamletFile "Hamlets/home.hamlet")
 
 --Alcool na mesa
 getCadpessoaR :: Handler Html
 getCadpessoaR = do 
     (widget, enctype) <-generateFormPost formPessoa
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadpessoaR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Cadastro Completo
-|]
+    defaultLayout $ do 
+          addStylesheet $ StaticR style_css
+          toWidget $ $(whamletFile "Hamlets/pessoas.hamlet")
 
 getCadestabR :: Handler Html
 getCadestabR = do 
     (widget, enctype) <-generateFormPost formEstabelecimento
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadestabR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Cadastro de estabelecimento Completo
-|]
+    defaultLayout $ do
+    addStylesheet $ StaticR style_css
+    toWidget$ $(whamletFile "Hamlets/estabelecimento.hamlet")
     
 getCadcategoriaR :: Handler Html
 getCadcategoriaR = do 
@@ -262,7 +250,13 @@ getLogoutR = do
      defaultLayout [whamlet| 
          <h1> ADEUS!
     |]
-     
+    
+getListaestabsR :: Handler Html
+getListaestabsR = do
+    allEstabs <- runDB $ selectList [] [Asc EstabelecimentoNome_estab]
+    defaultLayout $ do
+        addStylesheet $ StaticR style_css
+        toWidget $ $(whamletFile "Hamlets/listaestab.hamlet")
 
 getAboutR = defaultLayout [whamlet|
     Essa pagina foi criada para acelerar o processo de decidir roles!!!

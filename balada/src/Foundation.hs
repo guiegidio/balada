@@ -6,8 +6,11 @@ module Foundation where
 import Rotas
 import Yesod
 import Data.Text
+import Data.Maybe
 import Prelude
 import Yesod.Static
+import Text.Lucius
+import Control.Monad.Logger (runStdoutLoggingT)
 import Database.Persist.Postgresql
     ( ConnectionPool, SqlBackend, runSqlPool, runMigration )
 
@@ -32,6 +35,8 @@ Estabelecimento json
     email_estab Text
     ddd_estab Text
     telefone_estab Text
+    categoria Categoria_estabId
+    preço Faixa_precoId
     --delecao_estab Text
     deriving Show
     
