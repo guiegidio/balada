@@ -11,6 +11,13 @@ import Yesod.Static
 import Text.Lucius
 import Text.Cassius
 import Database.Persist.Postgresql
+--adicionado
+import Database.Persist
+import Database.Persist.Sqlite
+-- import Database.Persist.Sql.Raw 
+import Database.Persist.Sql (rawQuery)
+
+
 
 mkYesodDispatch "Balada" pRoutes
 
@@ -23,7 +30,7 @@ formPessoa = renderDivs $ Pessoas <$>
                            fsName= Nothing,
                            fsAttrs=[("maxlength","11")]} Nothing<*>
     areq textField "Nome: " Nothing <*>
-    areq textField "Login " Nothing <*>
+    areq textField "Login: " Nothing <*>
     areq passwordField "Senha: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "E-mail: " Nothing <*>
@@ -33,6 +40,7 @@ formPessoa = renderDivs $ Pessoas <$>
 formEstabelecimento :: Form Estabelecimento
 formEstabelecimento = renderDivs $ Estabelecimento <$>
     areq textField "Nome: " Nothing <*>
+    areq textField "Endereço: " Nothing <*>
     areq textField "Cidade: " Nothing <*>
     areq textField "Email: " Nothing <*>
     areq textField "DDD: " Nothing <*>
@@ -67,8 +75,8 @@ formDia =  renderDivs $ Dia_evento <$>
 --Form Login
 formLogin :: Form (Text,Text)
 formLogin = renderDivs $ (,) <$>
-    areq textField "Email: " Nothing <*>
-    areq passwordField "Senha: " Nothing
+          areq textField "Login: " Nothing <*>
+          areq passwordField "Senha: " Nothing
     
 --Lista Drop Down
 -- testar o funfar
@@ -120,42 +128,42 @@ getCadestabR = do
 getCadcategoriaR :: Handler Html
 getCadcategoriaR = do 
     (widget, enctype) <-generateFormPost formCategoria
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadcategoriaR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Cadastro de categoria Completo
-|]
+    defaultLayout $ do
+    addStylesheet $ StaticR style_css
+    toWidget$ $(whamletFile "Hamlets/categoria.hamlet")
 
 getCadsubcategR :: Handler Html
 getCadsubcategR = do
     (widget, enctype) <-generateFormPost formSubcategoria
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadsubcategR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Cadastro de subcategoria Completo
-|]
+    defaultLayout $ do
+    addStylesheet $ StaticR style_css
+    toWidget$ $(whamletFile "Hamlets/subcategoria.hamlet")
 
 getCaddiaR :: Handler Html 
 getCaddiaR = do
     (widget, enctype) <-generateFormPost formDia
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CaddiaR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Cadastro de dia evento Completo
-|]
+    defaultLayout $ do
+    addStylesheet $ StaticR style_css
+    toWidget$ $(whamletFile "Hamlets/dia.hamlet")
 
 getCadfaixaprecoR :: Handler Html    
 getCadfaixaprecoR = do
     (widget, enctype) <-generateFormPost formFaixapreco
-    defaultLayout [whamlet|
-        <center> <form method=post enctype=#{enctype} action=@{CadfaixaprecoR}>
-        ^{widget}
-        <input type="submit" value="Enviar">
-        <h1> Faixa de preco estabelecido
-|]
+    defaultLayout $ do
+    addStylesheet $ StaticR style_css
+    toWidget$ $(whamletFile "Hamlets/preco.hamlet")
+ 
+--adicionado: https://github.com/yesodweb/yesod/wiki/RawSQL site de referência    
+--getPesquisaR :: Handler Html
+--getPesquisaR = do 
+--    estabelecimento <- selectEstab pattern 
+--    defaultLayout $ do
+--    addStylesheet $ StaticR style_css
+--    toWidget$ $(whamletFile "Hamlets/pesquisa.hamlet")
+--  where
+--    selectEstab :: Text -> Handler[Entity Estabelecimento]
+--    selectEstab t = runDB $ rawSQL s [toPersistValue t]
+--    where s = "SELECT ?? FROM estabelecimento WHERE cidade_estab = ? ORDER BY nome_estab"
 
 
 --alcool na garrafa
@@ -205,20 +213,19 @@ postCaddiaR = do
 
 --Limbo Mental
 getAdminR :: Handler Html
-getAdminR = defaultLayout [whamlet|
-    <h1> Bem-vindo meu Rei!
-|]
+getAdminR = defaultLayout $ do 
+          addStylesheet $ StaticR style_css
+          toWidget $ $(whamletFile "Hamlets/administrador.hamlet")
+
 
 
 getLoginR :: Handler Html
-getLoginR = do
-           (widget, enctype) <- generateFormPost formLogin
-           defaultLayout [whamlet|
-                 <form method=post enctype=#{enctype} action=@{LoginR}>
-                     ^{widget}
-                     <input type="submit" value="Login">
-                    <a href=@{HomeR}>Pagina Inicial
-           |]
+getLoginR = do 
+            (widget, enctype) <-generateFormPost formLogin
+            defaultLayout $ do
+            addStylesheet $ StaticR style_css
+            toWidget$ $(whamletFile "Hamlets/login.hamlet")
+    
 
 postLoginR :: Handler Html
 postLoginR = do
@@ -226,19 +233,19 @@ postLoginR = do
            case result of 
                FormSuccess ("admin","admin") -> setSession "_ID" "admin" >> redirect AdminR
                FormSuccess (login,senha) -> do 
-                   user <- runDB $ selectFirst [PessoasEmail ==. login, PessoasSenha ==. senha] []
-                   case user of
+                   pessoas <- runDB $ selectFirst [PessoasLogin ==. login, PessoasSenha ==. senha] []
+                   case pessoas of
                        Nothing -> redirect LoginR
                        Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
+               _ -> redirect ErroR
 
 getPerfilR :: PessoasId -> Handler Html
 getPerfilR uid = do
       pessoas <- runDB $ get404 uid
-      defaultLayout [whamlet|
-          <p><b> Pagina de #{pessoasNome pessoas}
-          <p><b> Login: #{pessoasLogin pessoas}
-      |]
-
+      defaultLayout $ do
+        addStylesheet $ StaticR style_css
+        toWidget$ $(whamletFile "Hamlets/perfil.hamlet")
+      
 getErroR :: Handler Html
 getErroR = defaultLayout [whamlet|
      <h1> Erro de cadastro
@@ -247,9 +254,9 @@ getErroR = defaultLayout [whamlet|
 getLogoutR :: Handler Html
 getLogoutR = do
      deleteSession "_ID"
-     defaultLayout [whamlet| 
-         <h1> ADEUS!
-    |]
+     defaultLayout $ do
+      addStylesheet $ StaticR style_css
+      toWidget$ $(whamletFile "Hamlets/logout.hamlet")
     
 getListaestabsR :: Handler Html
 getListaestabsR = do
@@ -257,6 +264,19 @@ getListaestabsR = do
     defaultLayout $ do
         addStylesheet $ StaticR style_css
         toWidget $ $(whamletFile "Hamlets/listaestab.hamlet")
+
+--getListapessoasR :: Handler Html
+--getListapessoasR = do
+--        listaPessoas <- runDB $ selectList [] [Asc PessoasNome]
+--        defaultLayout $ do
+--            addStylesheet $ StaticR style_css
+--            toWidget $ $(whamletFile "Hamlets/listapessoas.hamlet")
+        
+--getDelpessoasR :: PessoasId -> Handler Html
+--getDelpessoasR pid = do
+--        runDB $ get404 pid
+--        runDB $ delete $ pid
+--        redirect ListapessoasR
 
 getAboutR = defaultLayout [whamlet|
     Essa pagina foi criada para acelerar o processo de decidir roles!!!

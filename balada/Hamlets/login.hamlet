@@ -1,0 +1,46 @@
+<head>
+<title>css layouts</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/typography.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<!--[if lte IE 6]>
+<style type="text/css">
+.clearfix {height: 1%;}
+   
+#resol {position:absolute;} body {overflow-x: hidden;} #footer {-padding-bottom:50px;}
+</style>
+<![endif]-->
+<!--[if gte IE 7.0]>
+<style type="text/css">
+.clearfix {display: inline-block;}
+</style>
+<![endif]-->
+<!--[if gte IE 8.0]>
+<style type="text/css">
+.clearfix {display: block;}
+</style>
+<![endif]-->
+
+<body>
+   <div id="mainwrap">		
+      <div id="pagetop"><div id="pagetop-inner">
+         <div id="header" class="clearfix">
+             
+             
+
+   <div id="mainnav" class="vernav clearfix">
+      <ul class="clearfix">
+         <li><a href=@{LoginR}><span>LOGIN</a></li>
+         <li><a href=@{CadpessoaR}><span>CADASTRE-SE</a></li>
+         
+
+   <div id="content">
+      <div id="content-inner">
+         <h3>LOGIN</H3>
+         <form method=post enctype=#{enctype} action=@{LoginR}>
+            ^{widget}
+            <input type="submit" value="Login">
+
+<div id="footer">
+<center> <h5>Guilherme Egidio e Luiz Fernando
+<center>&copy; Lazy Company. All right reserved

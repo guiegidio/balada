@@ -31,12 +31,13 @@ Pessoas json
     
 Estabelecimento json
     nome_estab Text
+    end_estab Text
     cidade_estab Text
     email_estab Text
     ddd_estab Text
     telefone_estab Text
     categoria Categoria_estabId
-    preço Faixa_precoId
+    preco Faixa_precoId
     --delecao_estab Text
     deriving Show
     
@@ -88,6 +89,35 @@ staticFiles "static"
 
 mkYesodData "Balada" pRoutes
 
+instance Yesod Balada where
+authRoute _ = Just LoginR
+
+isAuthorized LoginR _ = return Authorized
+isAuthorized ErroR _ = return Authorized
+isAuthorized HomeR _ = return Authorized
+isAuthorized CadpessoaR _ = return Authorized
+isAuthorized CadestabR _ = return Authorized
+isAuthorized CadcategoriaR _ = isAdmin
+isAuthorized CadsubcategR _ = isAdmin
+isAuthorized CaddiaR _ = isAdmin
+isAuthorized CadfaixaprecoR _ = isAdmin
+isAuthorized ListaestabsR _ = isUser
+isAuthorized _ _ = isUser
+
+isUser = do
+    mu <- lookupSession "_ID"
+    return $ case mu of
+        Nothing -> AuthenticationRequired
+        Just _ -> Authorized
+
+isAdmin = do
+    mu <- lookupSession "_ID"
+    return $ case mu of
+        Nothing -> AuthenticationRequired
+        Just "admin" -> Authorized
+        Just _ -> Unauthorized "Necessário Login de Administrador"
+
+
 instance YesodPersist Balada where
     type YesodPersistBackend Balada = SqlBackend
     runDB f = do
@@ -95,7 +125,7 @@ instance YesodPersist Balada where
       let pool = connPool master
       runSqlPool f pool
       
-instance Yesod Balada where
+
 
 type Form a = Html -> MForm Handler (FormResult a, Widget)
 

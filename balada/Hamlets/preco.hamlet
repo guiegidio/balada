@@ -1,0 +1,53 @@
+<head>
+<title>css layouts</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/typography.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<!--[if lte IE 6]>
+<style type="text/css">
+.clearfix {height: 1%;}
+   
+#resol {position:absolute;} body {overflow-x: hidden;} #footer {-padding-bottom:50px;}
+</style>
+<![endif]-->
+<!--[if gte IE 7.0]>
+<style type="text/css">
+.clearfix {display: inline-block;}
+</style>
+<![endif]-->
+<!--[if gte IE 8.0]>
+<style type="text/css">
+.clearfix {display: block;}
+</style>
+<![endif]-->
+
+<body>
+   <div id="mainwrap">		
+      <div id="pagetop"><div id="pagetop-inner">
+         <div id="header" class="clearfix">
+             <li><a href=@{LogoutR}><span>Logout</a></li>
+             
+
+   <div id="mainnav" class="vernav clearfix">
+      <ul class="clearfix">
+         <li><a href=@{CadestabR}><span>Cadastro estabelecimento</a></li>
+         <li><a href=@{CadcategoriaR}><span>Cadastro categoria</a></li>
+         <li><a href=@{CadsubcategR}><span>Cadastro SubCategoria</a></li>
+         <li><a href=@{CadfaixaprecoR}><span>Cadastro de preços</a></li>
+         <li><a href=@{ListaestabsR}><span>Lista estabelecimentos</a></li>
+  
+
+   <div id="content">
+      <div id="content-inner">
+         <h3> Faixa de preco estabelecido
+         <p>
+            <center> <form method=post enctype=#{enctype} action=@{CadfaixaprecoR}>
+            ^{widget}
+            <input type="submit" value="Enviar">
+
+
+<div id="footer">
+<center> <h5>Guilherme Egidio e Luiz Fernando
+<center>&copy; Lazy Company. All right reserved
+
+

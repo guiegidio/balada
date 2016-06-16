@@ -20,6 +20,9 @@ pRoutes = [parseRoutes|
   /caddia CaddiaR GET POST
   /cadfaixapreco CadfaixaprecoR GET POST
   /listaestabs ListaestabsR GET
+--  /delpessoas DelpessoasR GET
+--  /listapessoas ListapessoasR GET
+--  /pesquisa PesquisaR GET pesquisa da balada
   
   /static StaticR Static getStatic
 |]

@@ -2,6 +2,7 @@
 Comment layouts
 =========================================*/
 
+
 div.wrap {
 	text-align: center;
 }
@@ -11,7 +12,7 @@ div.pagesize {
 	margin: 0 auto;
 	text-align: left;
 }
-
+	
 div.module-box {
 	width: 100%;
 }
@@ -256,6 +257,7 @@ html {
 	height: 100%!important;
 	height: auto;
 }
+
 
 a { text-decoration: none; color: #666;}
 

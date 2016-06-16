@@ -1,81 +1,50 @@
 <head>
-<title>Balada App
+<title>css layouts</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/typography.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/main.css" rel="stylesheet" type="text/css" />
 <!--[if lte IE 6]>
 <style type="text/css">
 .clearfix {height: 1%;}
-img {border: none;}
+   
 #resol {position:absolute;} body {overflow-x: hidden;} #footer {-padding-bottom:50px;}
- 
+</style>
 <![endif]-->
 <!--[if gte IE 7.0]>
 <style type="text/css">
 .clearfix {display: inline-block;}
- 
+</style>
 <![endif]-->
 <!--[if gte IE 8.0]>
 <style type="text/css">
 .clearfix {display: block;}
- 
+</style>
 <![endif]-->
- 
+
 <body>
-<div id="mainwrap">																																																																																																																																																																																																																																																																																																																				
+   <div id="mainwrap">		
+      <div id="pagetop"><div id="pagetop-inner">
+         <div id="header" class="clearfix">
+             <li><a href=@{LogoutR}><span>Logout</a></li>
+             
 
-    <div id="pagetop"><div id="pagetop-inner">
-        <div id="header" class="clearfix">
-            <h1 id="logo"><a href="?">Royal Store  
-            <a href="?" id="but-green"><span>Viva a Noite!
-            
+   <div id="mainnav" class="vernav clearfix">
+      <ul class="clearfix">
+         <li><a href=@{CadestabR}><span>Cadastro estabelecimento</a></li>
+         <li><a href=@{CadcategoriaR}><span>Cadastro categoria</a></li>
+         <li><a href=@{CadsubcategR}><span>Cadastro SubCategoria</a></li>
+         <li><a href=@{CadfaixaprecoR}><span>Cadastro de preços</a></li>
+         <li><a href=@{ListaestabsR}><span>Lista estabelecimentos</a></li>
+  
+  
 
-        <div id="mainnav" class="vernav clearfix">
-            <ul class="clearfix">
-                <li><a href=@{HomeR}Inicio
-                <li><a href=@{CadpessoaR}><span>CADASTRE-SE
-                <li><a href=@{CadestabR}><span>Cadastro estabelecimento
-                <li><a href=@{CadcategoriaR}><span>Cadastro categoria
-                <li><a href=@{CadsubcategR}><span>Cadastro SubCategoria
-                <li><a href=@{CaddiaR}><span>Cadastro dia
-                <li><a href=@{CadfaixaprecoR}><span>Cadastro de preços
-                <li><a href=@{AboutR}><span>Saiba Mais
-                
-                
-        <div id="content">
-            <div id="content-inner">
-                <h2 id="label">webcome to our website BUYING AND SELLING NEW AND USED 
-                <p style="margin-bottom: 40px;"><strong>Fusce dictum quam et nisl in hac habitasse platea 
-                      fusce tristique nisi tempus lectus. Suspendisse accumsan 
-                      dapibus enim. Ut non lectus. Fusce ornare dui sed magna. 
-                      Sed nec dolor eget lacus fermentum gravida.  
-                <p>Fusce dictum quam et nisl in hac habitasse platea 
-                      fusce tristique nisi tempus lectus. Suspendisse accumsan 
-                      dapibus enim. Ut non lectus. Fusce ornare dui sed magna. 
-                      Sed nec dolor eget lacus fermentum gravida. 
-                 
-            <div class="clearfix">
-                <a href="?" class="but-grey"><span>Lorem colore  
-                <a href="?" class="but-grey"><span>Lorem colore  
-                <a href="?" class="but-grey"><span>Lorem colore
-                
-    <div id="pagebot" class="clearfix">
-        <h2>Vestibulum <img src="images/bullet1.gif" alt="" style="margin-bottom: -1px" /> 
-        <div id="box-wrap" class="clearfix">
-           <div class="box">
-           <span class="date">04.01.09 
-           <p><a href="?" class="title">Curabitur pharetra dui ac dui. Etiam porta dictum felis. In a nisl in neque mattis  
-           <img src="images/car1-xhdzy.jpg" class="img" alt="xhdzy" />
-                <p>Proin mattis nunc sit amet mauris. Morbi turpis. Donec nonummy, magna nec vestibulum pretium. Vivamus auctor condimentum turpis. Sed a urna. Praesent arcu quam rhoncus vestibulum nunc. 
+   <div id="content">
+      <div id="content-inner">
+         <h1> Pagina de administrador!
 
-            <div class="box">
-                <span class="date">04.01.09 
-                <p><a href="?" class="title">Curabitur pharetra dui ac dui. Etiam porta dictum felis. In a nisl in neque mattis  
-                <img src="images/car2.jpg" class="img" alt="" />
-                <p>Proin mattis nunc sit amet mauris. Morbi turpis. Donec nonummy, magna nec vestibulum pretium. Vivamus auctor condimentum turpis. Sed a urna. Praesent arcu quam rhoncus vestibulum nunc. 
 
-            <div class="box box-last">
-                <span class="date">04.01.09 
-                <p><a href="?" class="title">Curabitur pharetra dui ac dui. Etiam porta dictum felis. In a nisl in neque mattis  
-                <img src="images/car3.jpg" class="img" alt="" />
-                <p>Proin mattis nunc sit amet mauris. Morbi turpis. Donec nonummy, magna nec vestibulum pretium. Vivamus auctor condimentum turpis. Sed a urna. Praesent arcu quam rhoncus vestibulum nunc. 
+<div id="footer">
+<center> <h5>Guilherme Egidio e Luiz Fernando
+<center>&copy; Lazy Company. All right reserved
 
-    <div id="footer">
-        &copy; Guilherme Egidio e Luiz Fernando. All right reserved
+
